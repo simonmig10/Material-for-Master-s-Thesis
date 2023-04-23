@@ -2,7 +2,7 @@
 
 ## Material 
 
-This Github reporcetory includes alle the coding material necesarry for replecating the results of the main analysis aswell as the sensitivity analyses. 
+This Github repository includes alle the coding material necesarry for replecating the results of the main analysis as well as the sensitivity analyses. 
 
 The material is split into two categories: 
 
