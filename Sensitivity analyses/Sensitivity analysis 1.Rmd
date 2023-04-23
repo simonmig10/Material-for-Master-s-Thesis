@@ -4,8 +4,7 @@ output: html_document
 date: "2022-12-21"
 ---
 
-Special journal:
-Public policy for the achievement of sustainable development goals
+
 
 ```{r}
 rm(list = ls())
