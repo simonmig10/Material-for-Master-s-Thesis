@@ -4607,23 +4607,23 @@ grid()
 
 ```{r, fig.width=10, fig.height=10}
 par(mfrow=c(4,2))
-plot(h_brown_h_10-h_brown_s_10, col= "black", xlab= "Year", ylab= "h_DK_h-h_DK_s", main= "Redundant equation Scenario 1 DK", ylim=c(-2,2))
+plot(h_brown_h_10-h_brown_s_10, col= "black", xlab= "Year", ylab= "level", main= expression("Redundant equation "*(h[h]^DK-h[s]^DK)* "Scenario 1 DK"), ylim=c(-2,2))
 
-plot(h_green_h_10-h_green_s_10, col= "black", xlab= "Year", ylab= "h_ROW_h-h_ROW_s", main= "Redundant equation Scenario 1 ROW", ylim=c(-2,2))
+plot(h_green_h_10-h_green_s_10, col= "black", xlab= "Year", ylab= "level", main= expression("Redundant equation "*(h[h]^ROW-h[s]^ROW)* "Scenario 1 ROW"), ylim=c(-2,2))
 
-plot(h_brown_h_20-h_brown_s_20, col= "black", xlab= "Year", ylab= "h_DK_h-h_DK_s", main= "Redundant equation Scenario 2 DK", ylim=c(-2,2))
+plot(h_brown_h_20-h_brown_s_20, col= "black", xlab= "Year", ylab= "level", main= expression("Redundant equation "*(h[h]^DK-h[s]^DK)* "Scenario 2 DK"), ylim=c(-2,2))
 
-plot(h_green_h_20-h_green_s_20, col= "black", xlab= "Year", ylab= "h_ROW_h-h_ROW_s", main= "Redundant equation Scenario 2 ROW", ylim=c(-2,2))
+plot(h_green_h_20-h_green_s_20, col= "black", xlab= "Year", ylab= "level", main= expression("Redundant equation "*(h[h]^ROW-h[s]^ROW)* "Scenario 2 ROW"), ylim=c(-2,2))
 
-plot(h_brown_h_30-h_brown_s_30, col= "black", xlab= "Year", ylab= "h_DK_h-h_DK_s", main= "Redundant equation Scenario 3 DK", ylim=c(-2,2))
-
-
-plot(h_green_h_30-h_green_s_30, col= "black", xlab= "Year", ylab= "h_ROW_h-h_ROW_s", main= "Redundant equation Scenario 3 ROW", ylim=c(-2,2))
-
-plot(h_brown_h_40-h_brown_s_40, col= "black", xlab= "Year", ylab= "h_DK_h-h_DK_s", main= "Redundant equation Scenario 4 DK", ylim=c(-2,2))
+plot(h_brown_h_30-h_brown_s_30, col= "black", xlab= "Year", ylab= "level", main= expression("Redundant equation "*(h[h]^DK-h[s]^DK)* "Scenario 3 DK"), ylim=c(-2,2))
 
 
-plot(h_green_h_40-h_green_s_40, col= "black", xlab= "Year", ylab= "h_ROW_h-h_ROW_s", main= "Redundant equation Scenario 4 ROW", ylim=c(-2,2))
+plot(h_green_h_30-h_green_s_30, col= "black", xlab= "Year", ylab= "level", main= expression("Redundant equation "*(h[h]^ROW-h[s]^ROW)* "Scenario 3 ROW"), ylim=c(-2,2))
+
+plot(h_brown_h_40-h_brown_s_40, col= "black", xlab= "Year", ylab= "level", main= expression("Redundant equation "*(h[h]^DK-h[s]^DK)* "Scenario 4 DK"), ylim=c(-2,2))
+
+
+plot(h_green_h_40-h_green_s_40, col= "black", xlab= "Year", ylab= "level", main= expression("Redundant equation "*(h[h]^ROW-h[s]^ROW)* "Scenario 4 ROW"), ylim=c(-2,2))
 ```
 
 
@@ -5353,7 +5353,7 @@ plot(h_green_h_14-h_green_s_14)
 plot(window((eta_gr_brown_11 - eta_gr_brown_10)/eta_gr_brown_10*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 1", ylim= c(0,9), lwd= 2);
 lines(window((x_gr_brown_11 - x_gr_brown_10)/x_gr_brown_10*100, start=2000), col= "blue", lwd= 2);
 lines(window((x_brown_11 - x_brown_10)/x_brown_10*100, start= 2000), col= "red", lwd= 2);
-legend("left", legend=c("Technological development","Green exports", "Total exports"),
+legend("left", legend=c("Efficiency of Danish green capital","Green Danish exports", "Total Danish exports"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black", "blue", "red"));
 grid()
 ```
@@ -5405,7 +5405,7 @@ data_plot_S1 %>%
 plot(window((eta_gr_brown_12 - eta_gr_brown_20)/eta_gr_brown_20*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 2", ylim= c(0,9), lwd= 2);
 lines(window((x_gr_brown_12 - x_gr_brown_20)/x_gr_brown_20*100, start=2000), col= "blue", lwd= 2);
 lines(window((x_brown_12 - x_brown_20)/x_brown_20*100, start= 2000), col= "red", lwd= 2);
-legend("left", legend=c("Technological development","Green exports", "Total exports"),
+legend("left", legend=c("Efficiency of Danish green capital","Green Danish exports", "Total Danish exports"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black", "blue", "red"));
 grid()
 ```
@@ -5461,7 +5461,7 @@ grid()
 plot(window((eta_gr_brown_13 - eta_gr_brown_30)/eta_gr_brown_30*100, start=2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 3", ylim= c(0,9), lwd= 2);
 lines(window((x_gr_brown_13 - x_gr_brown_30)/x_gr_brown_30*100, start=2000), col= "blue", lwd= 2);
 lines(window((x_brown_13 - x_brown_30)/x_brown_30*100, start=2000), col= "red", lwd= 2);
-legend("left", legend=c("Technological development","Green exports", "Total exports"),
+legend("left", legend=c("Efficiency of Danish green capital","Green Danish exports", "Total Danish exports"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black", "blue", "red"));
 grid()
 
@@ -5500,7 +5500,7 @@ data_plot_S3 %>%
 plot(window((eta_gr_brown_14 - eta_gr_brown_40)/eta_gr_brown_40*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 4", ylim= c(0,9), lwd= 2);
 lines(window((x_gr_brown_14 - x_gr_brown_40)/x_gr_brown_40*100, start= 2000), col= "blue", lwd= 2);
 lines(window((x_brown_14 - x_brown_40)/x_brown_40*100, start= 2000), col= "red", lwd= 2);
-legend("left", legend=c("Technological development","Green exports", "Total exports"),
+legend("left", legend=c("Efficiency of Danish green capital","Green Danish exports", "Total Danish exports"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black", "blue", "red"));
 grid()
 ```
@@ -5509,14 +5509,14 @@ grid()
 
 ```{r, fig.width= 12, fig.height= 5}
 par(mfrow=c(1,2))
-plot(window((im_brown_14 - im_brown_40)/im_brown_40*100, start=2000), col= "black", xlab= "Year", ylab= "% deviation from baseline", main= "Danish exports and imports in scenario 4", lwd= 2);
+plot(window((im_brown_14 - im_brown_40)/im_brown_40*100, start=2000), col= "black", xlab= "Year", ylab= "% deviation from baseline", main= "Components of the trade balance scenario 4", lwd= 2);
 lines((x_brown_14 - x_brown_40)/x_brown_40*100, col= "red",lwd=2);
 legend("left", legend=c("Danish imports","Danish exports" ),
        lty=c(1),lwd=c(2),bty="n", col = c("black","red"));
 grid()
 
 
-plot((x_brown_14-im_brown_14)*1000, col= "black", xlab= "Year", ylab= "billion dollars", main= "Danish trade balance",lwd=2);
+plot((x_brown_14-im_brown_14)*1000, col= "black", xlab= "Year", ylab= "Billion USD", main= "Danish trade balance",lwd=2);
 lines((x_brown_40-im_brown_40)*1000, col= "red",lwd=2);
 legend(x=1960, y=-8, legend=c("Scenario 4","Baseline 4" ),
        lty=c(1),lwd=c(2),bty="n", col = c("black","red"));
@@ -5556,21 +5556,21 @@ data_plot_S4 %>%
 
 ## Effect on output
 
-```{r, fig.width= 10, fig.height= 5}
+```{r, fig.width= 15, fig.height= 7}
 
 par(mfrow=c(1,2))
-plot((y_brown_11 - y_brown_10)/y_brown_10*100, col= "Black", xlab= "Year", ylab= "% change from baseline", main= "GDP in DK", lwd= 2);
-lines((y_brown_12 - y_brown_20)/y_brown_20*100, col= "green", lwd= 2);
-lines((y_brown_13 - y_brown_30)/y_brown_30*100, col= "blue", lwd= 2);
-lines((y_brown_14 - y_brown_40)/y_brown_40*100, col= "red", lwd= 2);
+plot(window((y_brown_11 - y_brown_10)/y_brown_10*100, start= 2000), col= "Black", xlab= "Year", ylab= "% change from baseline", main= "GDP in DK", lwd= 2);
+lines(window((y_brown_12 - y_brown_20)/y_brown_20*100, start= 2000), col= "green", lwd= 2);
+lines(window((y_brown_13 - y_brown_30)/y_brown_30*100, start= 2000), col= "blue", lwd= 2);
+lines(window((y_brown_14 - y_brown_40)/y_brown_40*100, start= 2000), col= "red", lwd= 2);
 legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
 grid()
 
-plot((y_green_11- y_green_10)/y_green_10*100, col= "Black", xlab= "Year", ylab= "% change from baseline", main= "GDP in ROW", ylim=c(0,0.007), lwd= 2 );
-lines((y_green_12 - y_green_20)/y_green_20*100, col= "green", lwd= 2);
-lines((y_green_13 - y_green_30)/y_green_30*100, col= "blue", lwd= 2);
-lines((y_green_14 - y_green_40)/y_green_30*100, col= "red", lwd= 2);
+plot(window((y_green_11- y_green_10)/y_green_10*100, start= 2000), col= "Black", xlab= "Year", ylab= "% change from baseline", main= "GDP in ROW", ylim=c(0,0.007), lwd= 2 );
+lines(window((y_green_12 - y_green_20)/y_green_20*100, start= 2000), col= "green", lwd= 2);
+lines(window((y_green_13 - y_green_30)/y_green_30*100, start= 2000), col= "blue", lwd= 2);
+lines(window((y_green_14 - y_green_40)/y_green_30*100, start= 2000), col= "red", lwd= 2);
 legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green","blue", "red"));
 grid()
@@ -5584,22 +5584,15 @@ grid()
 
 ```{r, fig.width= 12, fig.height= 7}
 
-par(mfrow=c(1,2))
-plot((x_brown_11 - im_brown_11)*1000, col= "Black", xlab= "Year", ylab= "Billion dollars", main= "Trade balance for DK", lwd= 2);
+
+plot((x_brown_11 - im_brown_11)*1000, col= "Black", xlab= "Year", ylab= "Billion USD", main= "Trade balance for DK", lwd= 2);
 lines((x_brown_12 - im_brown_12)*1000, col= "green", lwd= 2);
 lines((x_brown_13 - im_brown_13)*1000, col= "blue", lwd= 2);
 lines((x_brown_14 - im_brown_14)*1000, col= "red", lwd= 2);
-legend(x=1960, y=-8000, legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
+legend(x=1960, y=-4, legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
 grid()
 
-plot((x_green_11 - im_green_11)*1000000, col= "Black", xlab= "Year", ylab= "Trade balance in mil $", main= "Trade balance ROW", lwd= 2);
-lines((x_green_12 - im_green_12)*1000000, col= "green", lwd= 2);
-lines((x_green_13 - im_green_13)*1000000, col= "blue", lwd= 2);
-lines((x_green_14 - im_green_14)*1000000, col= "red", lwd= 2);
-legend(x=1960, y=9000, legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
-       lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
-grid()
 
 ```
 
@@ -5836,18 +5829,18 @@ grid()
 ```{r, fig.width= 15, fig.height= 7}
 
 par(mfrow=c(1,2))
-plot((emis_11-emis_10)/emis_10*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= " Emission World", ylim= c(-0.06,0.01), lwd= 2);
-lines((emis_12-emis_20)/emis_20*100, col= "green", lwd= 2);
-lines((emis_13-emis_30)/emis_30*100, col= "blue", lwd= 2);
-lines((emis_14-emis_40)/emis_40*100, col= "red", lwd= 2);
+plot(window((emis_11-emis_10)/emis_10*100, start=2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= " Emission World", ylim= c(-0.06,0.01), lwd= 2);
+lines(window((emis_12-emis_20)/emis_20*100, start=2000), col= "green", lwd= 2);
+lines(window((emis_13-emis_30)/emis_30*100, start=2000), col= "blue", lwd= 2);
+lines(window((emis_14-emis_40)/emis_40*100, start=2000), col= "red", lwd= 2);
 legend("left", legend=c("Scenario 1","Scenario 2", "Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green","blue", "red"));
 grid()
 
-plot((temp_at_11-temp_at_10)/temp_at_10*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= " Atmospheric temprature", ylim= c(-0.004,0.001), lwd= 2);
-lines((temp_at_12-temp_at_20)/temp_at_20*100, col= "green", lwd= 2);
-lines((temp_at_13-temp_at_30)/temp_at_30*100, col= "blue", lwd= 2);
-lines((temp_at_14-temp_at_40)/temp_at_40*100, col= "red", lwd= 2);
+plot(window((temp_at_11-temp_at_10)/temp_at_10*100, start=2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= " Atmospheric temprature", ylim= c(-0.004,0.001), lwd= 2);
+lines(window((temp_at_12-temp_at_20)/temp_at_20*100, start=2000), col= "green", lwd= 2);
+lines(window((temp_at_13-temp_at_30)/temp_at_30*100, start=2000), col= "blue", lwd= 2);
+lines(window((temp_at_14-temp_at_40)/temp_at_40*100, start=2000), col= "red", lwd= 2);
 legend("left", legend=c("Scenario 1","Scenario 2", "Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green","blue", "red"));
 grid()
@@ -5858,30 +5851,30 @@ grid()
 ```{r, fig.width= 15, fig.height= 10}
 
 par(mfrow=c(2,2))
-plot((eta_brown_11 - eta_brown_10)/eta_brown_10*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 1 effeciency measures in DK", ylim= c(-3, 13), lwd= 2);
-lines((beta_brown_11 - beta_brown_10)/beta_brown_10*100, col= "green", lwd= 2);
-lines((epsilon_brown_11 - epsilon_brown_10)/epsilon_brown_10*100, col= "blue", lwd= 2);
+plot(window((eta_brown_11 - eta_brown_10)/eta_brown_10*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 1 effeciency measures in DK", ylim= c(-3, 13), lwd= 2);
+lines(window((beta_brown_11 - beta_brown_10)/beta_brown_10*100, start= 2000), col= "green", lwd= 2);
+lines(window((epsilon_brown_11 - epsilon_brown_10)/epsilon_brown_10*100, start= 2000), col= "blue", lwd= 2);
 legend("left", legend=c("Renewability share","Co2 intensity","Energy intensity"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue"));
 grid()
 
-plot((eta_brown_12 - eta_brown_20)/eta_brown_20*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 2 effeciency measures in DK", ylim= c(-3, 13), lwd= 2);
-lines((beta_brown_12 - beta_brown_20)/beta_brown_20*100, col= "green", lwd= 2);
-lines((epsilon_brown_12 - epsilon_brown_20)/epsilon_brown_20*100, col= "blue", lwd= 2);
+plot(window((eta_brown_12 - eta_brown_20)/eta_brown_20*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 2 effeciency measures in DK", ylim= c(-3, 13), lwd= 2);
+lines(window((beta_brown_12 - beta_brown_20)/beta_brown_20*100, start= 2000), col= "green", lwd= 2);
+lines(window((epsilon_brown_12 - epsilon_brown_20)/epsilon_brown_20*100, start= 2000), col= "blue", lwd= 2);
 legend("left", legend=c("Renewability share","Co2 intensity","Energy intensity"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue"));
 grid()
 
-plot((eta_brown_13 - eta_brown_30)/eta_brown_30*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 3 effeciency measures in DK", ylim= c(-3, 13), lwd= 2);
-lines((beta_brown_13 - beta_brown_30)/beta_brown_30*100, col= "green", lwd= 2);
-lines((epsilon_brown_13 - epsilon_brown_30)/epsilon_brown_30*100, col= "blue", lwd= 2);
+plot(window((eta_brown_13 - eta_brown_30)/eta_brown_30*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 3 effeciency measures in DK", ylim= c(-3, 13), lwd= 2);
+lines(window((beta_brown_13 - beta_brown_30)/beta_brown_30*100, start= 2000), col= "green", lwd= 2);
+lines(window((epsilon_brown_13 - epsilon_brown_30)/epsilon_brown_30*100, start= 2000), col= "blue", lwd= 2);
 legend("left", legend=c("Renewability share","Co2 intensity","Energy intensity"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue"));
 grid()
 
-plot((eta_brown_14 - eta_brown_40)/eta_brown_40*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 4 effeciency measures in DK", ylim= c(-3, 13), lwd= 2);
-lines((beta_brown_14 - beta_brown_40)/beta_brown_40*100, col= "green", lwd= 2);
-lines((epsilon_brown_14 - epsilon_brown_40)/epsilon_brown_40*100, col= "blue", lwd= 2);
+plot(window((eta_brown_14 - eta_brown_40)/eta_brown_40*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 4 effeciency measures in DK", ylim= c(-3, 13), lwd= 2);
+lines(window((beta_brown_14 - beta_brown_40)/beta_brown_40*100, start= 2000), col= "green", lwd= 2);
+lines(window((epsilon_brown_14 - epsilon_brown_40)/epsilon_brown_40*100, start= 2000), col= "blue", lwd= 2);
 legend("left", legend=c("Renewability share","Co2 intensity","Energy intensity"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue"));
 grid()
@@ -5892,30 +5885,30 @@ grid()
 ```{r, fig.width= 15, fig.height= 10}
 
 par(mfrow=c(2,2))
-plot((eta_green_11 - eta_green_10)/eta_green_10*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 1 effeciency measures in ROW",ylim= c(-0.002, 0.004), lwd= 2);
-lines((beta_green_11 - beta_green_10)/beta_green_10*100, col= "green", lwd= 2);
-lines((epsilon_green_11 - epsilon_green_10)/epsilon_green_10*100, col= "blue", lwd= 2);
+plot(window((eta_green_11 - eta_green_10)/eta_green_10*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 1 effeciency measures in ROW",ylim= c(-0.002, 0.004), lwd= 2);
+lines(window((beta_green_11 - beta_green_10)/beta_green_10*100, start= 2000), col= "green", lwd= 2);
+lines(window((epsilon_green_11 - epsilon_green_10)/epsilon_green_10*100, start= 2000), col= "blue", lwd= 2);
 legend("left", legend=c("Renewability share","Co2 intensity","Energy intensity"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue"));
 grid()
 
-plot((eta_green_12 - eta_green_20)/eta_green_20*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 2 effeciency measures in ROW",ylim= c(-0.002, 0.004), lwd= 2);
-lines((beta_green_12 - beta_green_20)/beta_green_20*100, col= "green", lwd= 2);
-lines((epsilon_green_12 - epsilon_green_20)/epsilon_green_20*100, col= "blue", lwd= 2);
+plot(window((eta_green_12 - eta_green_20)/eta_green_20*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 2 effeciency measures in ROW",ylim= c(-0.002, 0.004), lwd= 2);
+lines(window((beta_green_12 - beta_green_20)/beta_green_20*100, start= 2000), col= "green", lwd= 2);
+lines(window((epsilon_green_12 - epsilon_green_20)/epsilon_green_20*100, start= 2000), col= "blue", lwd= 2);
 legend("left", legend=c("Renewability share","Co2 intensity","Energy intensity"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue"));
 grid()
 
-plot((eta_green_13 - eta_green_30)/eta_green_30*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 3 effeciency measures in ROW",ylim= c(-0.01, 0.04), lwd= 2);
-lines((beta_green_13 - beta_green_30)/beta_green_30*100, col= "green", lwd= 2);
-lines((epsilon_green_13 - epsilon_green_30)/epsilon_green_30*100, col= "blue", lwd= 2);
+plot(window((eta_green_13 - eta_green_30)/eta_green_30*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 3 effeciency measures in ROW",ylim= c(-0.01, 0.04), lwd= 2);
+lines(window((beta_green_13 - beta_green_30)/beta_green_30*100, start= 2000), col= "green", lwd= 2);
+lines(window((epsilon_green_13 - epsilon_green_30)/epsilon_green_30*100, start= 2000), col= "blue", lwd= 2);
 legend("left", legend=c("Renewability share","Co2 intensity","Energy intensity"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue"));
 grid()
 
-plot((eta_green_14 - eta_green_40)/eta_green_40*100, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 4 effeciency measures in ROW", ylim= c(-0.01, 0.04), lwd= 2);
-lines((beta_green_14 - beta_green_40)/beta_green_40*100, col= "green", lwd= 2);
-lines((epsilon_green_14 - epsilon_green_40)/epsilon_green_40*100, col= "blue", lwd= 2);
+plot(window((eta_green_14 - eta_green_40)/eta_green_40*100, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Scenario 4 effeciency measures in ROW", ylim= c(-0.01, 0.04), lwd= 2);
+lines(window((beta_green_14 - beta_green_40)/beta_green_40*100, start= 2000), col= "green", lwd= 2);
+lines(window((epsilon_green_14 - epsilon_green_40)/epsilon_green_40*100, start= 2000), col= "blue", lwd= 2);
 legend("left", legend=c("Renewability share","Co2 intensity","Energy intensity"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue"));
 grid()
@@ -5925,10 +5918,10 @@ grid()
 ## Appendix
 
 ```{r}
-plot(carbon_tax_brown_11*1000, col= "Black", xlab= "Year", ylab= "Billion dollars", main= "Revenue of the carbon tax in DK", lwd= 2);
-lines(carbon_tax_brown_12*1000, col= "green", lwd= 2);
-lines(carbon_tax_brown_13*1000, col= "blue", lwd= 2);
-lines(carbon_tax_brown_14*1000, col= "red", lwd= 2);
+plot(window(carbon_tax_brown_11*1000, start= 2000), col= "Black", xlab= "Year", ylab= "Billion dollars", main= "Revenue of the carbon tax in DK", lwd= 2);
+lines(window(carbon_tax_brown_12*1000, start= 2000), col= "green", lwd= 2);
+lines(window(carbon_tax_brown_13*1000, start= 2000), col= "blue", lwd= 2);
+lines(window(carbon_tax_brown_14*1000, start= 2000), col= "red", lwd= 2);
 legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
 grid()
@@ -5936,7 +5929,7 @@ grid()
 
 ```{r, fig.width= 15, fig.height= 10}
 par(mfrow=c(2,2))
-plot(window(eta_gr_brown_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= "Renewability share of green capital in DK", ylim= c(0,140), lwd= 2);
+plot(window(eta_gr_brown_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= expression("Renewability share of green capital in DK "*eta[gr]^DK*""), ylim= c(0,140), lwd= 2);
 lines(window(eta_gr_brown_12*100, start= 2000), col= "green", lwd= 2);
 lines(window(eta_gr_brown_13*100, start= 2000), col= "blue", lwd= 2);
 lines(window(eta_gr_brown_14*100, start= 2000), col= "red", lwd= 2);
@@ -5945,7 +5938,8 @@ legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
 grid()
 
 
-plot(window(eta_avg_gr_brown_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= "Average renewability share of green capital in DK", ylim= c(0,140), lwd= 2);
+
+plot(window(eta_avg_gr_brown_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= expression("Average renewability share of green capital in DK "*eta[AVGgr]^DK*""), ylim= c(0,140), lwd= 2);
 lines(window(eta_avg_gr_brown_12*100, start= 2000), col= "green", lwd= 2);
 lines(window(eta_avg_gr_brown_13*100, start= 2000), col= "blue", lwd= 2);
 lines(window(eta_avg_gr_brown_14*100, start= 2000), col= "red", lwd= 2);
@@ -5954,7 +5948,7 @@ legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
 grid()
 
 
-plot(window(eta_im_gr_brown_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= "Average renewability share of imported green capital in DK", ylim= c(0,120), lwd= 2);
+plot(window(eta_im_gr_brown_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= expression("Average renewability share of imported green capital in DK "*eta[AVGgrim]^DK*""), ylim= c(0,120), lwd= 2);
 lines(window(eta_im_gr_brown_12*100, start= 2000), col= "green", lwd= 2);
 lines(window(eta_im_gr_brown_13*100, start= 2000), col= "blue", lwd= 2);
 lines(window(eta_im_gr_brown_14*100, start= 2000), col= "red", lwd= 2);
@@ -5962,7 +5956,7 @@ legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
 grid()
 
-plot(window(eta_brown_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= "Average renewability share of total capital in DK", ylim= c(0,100), lwd= 2);
+plot(window(eta_brown_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= expression("Average renewability share of total capital in DK "*eta[DK]*""), ylim= c(0,100), lwd= 2);
 lines(window(eta_brown_12*100, start= 2000), col= "green", lwd= 2);
 lines(window(eta_brown_13*100, start= 2000), col= "blue", lwd= 2);
 lines(window(eta_brown_14*100, start= 2000), col= "red", lwd= 2);
@@ -5972,7 +5966,7 @@ grid()
 ```
 ```{r, fig.width= 15, fig.height= 10}
 par(mfrow=c(2,2))
-plot(window(eta_gr_green_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= "Renewability share of green capital in ROW", ylim= c(0,140), lwd= 2);
+plot(window(eta_gr_green_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main=expression("Renewability share of green capital in ROW "*eta[gr]^ROW*""), ylim= c(0,140), lwd= 2);
 lines(window(eta_gr_green_12*100, start= 2000), col= "green", lwd= 2);
 lines(window(eta_gr_green_13*100, start= 2000), col= "blue", lwd= 2);
 lines(window(eta_gr_green_14*100, start= 2000), col= "red", lwd= 2);
@@ -5981,7 +5975,7 @@ legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
 grid()
 
 
-plot(window(eta_avg_gr_green_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= "Average renewability share of green capital in ROW", ylim= c(0,140), lwd= 2);
+plot(window(eta_avg_gr_green_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= expression("Average renewability share of green capital in ROW "*eta[AVGgr]^ROW*""), ylim= c(0,140), lwd= 2);
 lines(window(eta_avg_gr_green_12*100, start= 2000), col= "green", lwd= 2);
 lines(window(eta_avg_gr_green_13*100, start= 2000), col= "blue", lwd= 2);
 lines(window(eta_avg_gr_green_14*100, start= 2000), col= "red", lwd= 2);
@@ -5990,7 +5984,7 @@ legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
 grid()
 
 
-plot(window(eta_im_gr_green_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= "Average renewability share of imported green capital in ROW", ylim= c(0,120), lwd= 2);
+plot(window(eta_im_gr_green_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= expression("Average renewability share of imported green capital in ROW "*eta[AVGgrim]^ROW*""), ylim= c(0,120), lwd= 2);
 lines(window(eta_im_gr_green_12*100, start= 2000), col= "green", lwd= 2);
 lines(window(eta_im_gr_green_13*100, start= 2000), col= "blue", lwd= 2);
 lines(window(eta_im_gr_green_14*100, start= 2000), col= "red", lwd= 2);
@@ -5998,7 +5992,7 @@ legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
 grid()
 
-plot(window(eta_green_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= "Average renewability share of total capital in ROW", ylim= c(0,100), lwd= 2);
+plot(window(eta_green_11*100, start= 2000), col= "Black", xlab= "Year", ylab= "Percentage", main= expression("Average renewability share of total capital in ROW "*eta[ROW]*""), ylim= c(0,100), lwd= 2);
 lines(window(eta_green_12*100, start= 2000), col= "green", lwd= 2);
 lines(window(eta_green_13*100, start= 2000), col= "blue", lwd= 2);
 lines(window(eta_green_14*100, start= 2000), col= "red", lwd= 2);
@@ -6008,10 +6002,10 @@ grid()
 ```
 
 ```{r}
-plot((inv_gr_rd_brown_11-inv_gr_rd_brown_10 )*1000000, col= "Black", xlab= "Year", ylab= "Million dollars", main= "Change in Firms green R&D spendings", lwd= 2, ylim= c(-500,2000));
-lines((inv_gr_rd_brown_12-inv_gr_rd_brown_20)*1000000, col= "green", lwd= 2);
-lines((inv_gr_rd_brown_13- inv_gr_rd_brown_30)*1000000, col= "blue", lwd= 2);
-lines((inv_gr_rd_brown_14-inv_gr_rd_brown_40)*1000000, col= "red", lwd= 2);
+plot(window((inv_gr_rd_brown_11-inv_gr_rd_brown_10 )*1000000, start= 2000), col= "Black", xlab= "Year", ylab= "Million dollars", main= "Change in Firms green R&D spendings", lwd= 2, ylim= c(-500,2000));
+lines(window((inv_gr_rd_brown_12-inv_gr_rd_brown_20)*1000000, start= 2000), col= "green", lwd= 2);
+lines(window((inv_gr_rd_brown_13- inv_gr_rd_brown_30)*1000000, start= 2000), col= "blue", lwd= 2);
+lines(window((inv_gr_rd_brown_14-inv_gr_rd_brown_40)*1000000, start= 2000), col= "red", lwd= 2);
 legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
 grid()
@@ -6050,10 +6044,10 @@ grid()
 
 
 ```{r}
-plot((k_brown_11- k_brown_10)/k_brown_10, col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Total capital stock in DK", ylim= c(-0.012,0.003), lwd= 2);
-lines((k_brown_12- k_brown_20)/k_brown_20, col= "green", lwd= 2);
-lines((k_brown_13- k_brown_30)/k_brown_30, col= "blue", lwd= 2);
-lines((k_brown_14- k_brown_40)/k_brown_40, col= "red", lwd= 2);
+plot(window((k_brown_11- k_brown_10)/k_brown_10, start= 2000), col= "Black", xlab= "Year", ylab= "% deviation from baseline", main= "Total capital stock in DK", ylim= c(-0.012,0.003), lwd= 2);
+lines(window((k_brown_12- k_brown_20)/k_brown_20, start= 2000), col= "green", lwd= 2);
+lines(window((k_brown_13- k_brown_30)/k_brown_30, start= 2000), col= "blue", lwd= 2);
+lines(window((k_brown_14- k_brown_40)/k_brown_40, start= 2000), col= "red", lwd= 2);
 legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
        lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
 grid()
@@ -6143,16 +6137,16 @@ grid()
 
 ```{r, fig.width=15, fig.height=10}
 par(mfrow=c(2,2))
-plot(cumsum(window((emis_brown_11 - emis_brown_10)*1000, start= 2030)), type = "l", col= "Black", xlab= "Year", ylab= "cumulative sum", main= "cumulative sum of change in Danish emission (million tons) scenario 1", lwd= 2); 
+plot(ts(cumsum(window((emis_brown_11 - emis_brown_10)*1000, start= 2030)), start = 2030, frequency = 1), type = "l", col= "Black", xlab= "Year", ylab= "cumulative sum", main= "cumulative sum of change in Danish emission (million tons) scenario 1", lwd= 2); 
 grid()
 
-plot(cumsum(window((emis_brown_12 - emis_brown_20)*1000, start= 2030)), type = "l", col= "Black", xlab= "Year", ylab= "cumulative sum", main= "cumulative sum of change in Danish emission (million tons) scenario 2", lwd= 2); 
+plot(ts(cumsum(window((emis_brown_12 - emis_brown_20)*1000, start= 2030)), start = 2030, frequency = 1), type = "l", col= "Black", xlab= "Year", ylab= "cumulative sum", main= "cumulative sum of change in Danish emission (million tons) scenario 2", lwd= 2); 
 grid()
 
-plot(cumsum(window((emis_brown_13 - emis_brown_30)*1000, start= 2030)), type = "l", col= "Black", xlab= "Year", ylab= "cumulative sum", main= "cumulative sum of change in Danish emission (million tons) scenario 3", lwd= 2); 
+plot(ts(cumsum(window((emis_brown_13 - emis_brown_30)*1000, start= 2030)), start = 2030, frequency = 1), type = "l", col= "Black", xlab= "Year", ylab= "cumulative sum", main= "cumulative sum of change in Danish emission (million tons) scenario 3", lwd= 2); 
 grid()
 
-plot(cumsum(window((emis_brown_14 - emis_brown_40)*1000, start= 2030)), type = "l", col= "Black", xlab= "Year", ylab= "cumulative sum", main= "cumulative sum of change in Danish emission (million tons) scenario 4", lwd= 2); 
+plot(ts(cumsum(window((emis_brown_14 - emis_brown_40)*1000, start= 2030)), start = 2030, frequency = 1), type = "l", col= "Black", xlab= "Year", ylab= "cumulative sum", main= "cumulative sum of change in Danish emission (million tons) scenario 4", lwd= 2); 
 grid()
 
 ```
