@@ -4,7 +4,8 @@ output: html_document
 date: "2022-12-21"
 ---
 
-
+Special journal:
+Public policy for the achievement of sustainable development goals
 
 ```{r}
 rm(list = ls())
@@ -292,7 +293,7 @@ IDENTITY> inv_gr_rd_brown
 EQ> LOG(inv_gr_rd_brown) = -2.305 + LOG(inv_brown)
 IF> date >= 1990 & Weak_PH > 0 & carbon_tax_brown <= 0
 IDENTITY> inv_gr_rd_brown
-EQ> LOG(inv_gr_rd_brown) = -1.42 + LOG(inv_brown) + 0.15*LOG(carbon_tax_brown)
+EQ> LOG(inv_gr_rd_brown) = -1.72 + LOG(inv_brown) + 0.1*LOG(carbon_tax_brown)
 IF> date >= 1990 & Weak_PH > 0 & carbon_tax_brown > 0 
 IDENTITY> inv_gr_rd_brown
 EQ> inv_gr_rd_brown = 0
@@ -4856,6 +4857,7 @@ carbon_tax_dev_brown_11 = S_1$simulation$carbon_tax_dev_brown
 
 inv_gr_brown_t_11 > inv_brown_11 - inv_gr_im_brown_11 - inv_gr_rd_brown_11
 
+inv_gr_rd_brown_11/inv_brown_11
 
 ## Stability check
 h_brown_h_11 = S_1$simulation$h_brown_h
@@ -5010,7 +5012,7 @@ carbon_tax_dev_brown_12 = S_2$simulation$carbon_tax_dev_brown
 
 inv_gr_brown_t_12 > inv_brown_12 - inv_gr_im_brown_12 - inv_gr_rd_brown_12
 
-
+inv_gr_rd_brown_12/inv_brown_12
 ## Stability check
 h_brown_h_12 = S_2$simulation$h_brown_h
 h_brown_s_12 = S_2$simulation$h_brown_s
@@ -5022,293 +5024,19 @@ plot(h_green_h_12-h_green_s_12)
 ```
 
 
-# Sensitivity
 
-## Sens 1 strong PH 
 
-### Baseline
+
+## Scenario 3
+
+
 
 ```{r}
 # Define add-factor list (defining shock)
-constantAdjList_sen1b <- list(
+constantAdjList_S3 <- list(
   
-Strong_PH = TIMESERIES(Strong_PH_model+1 ,START=c(1960,1),  FREQ=1)
-
-)
-
-```
-
-
-```{r}
-# Simulate the model (following shock)
-Sen_1b <- SIMULATE(S_model
-                    ,simType='FORECAST'
-                    ,TSRANGE=c(1961,1,2060,1)
-                    ,simConvergence=0.00001
-                    ,simIterLimit=100
-                    ,ConstantAdjustment=constantAdjList_sen1b
-                    )
-```
-
-
-```{r}
-
-carbon_tax_x_brown_sen1b= Sen_1b$simulation$carbon_tax_x_brown
-x_gr_brown_sen1b= Sen_1b$simulation$x_gr_brown
-
-cons_w_green_sen1b= Sen_1b$simulation$cons_w_green
-cons_r_green_sen1b= Sen_1b$simulation$cons_r_green
-im_green_sen1b= Sen_1b$simulation$im_green
-inv_green_sen1b= Sen_1b$simulation$inv_green
-gov_tot_green_sen1b= Sen_1b$simulation$gov_tot_green
-cons_green_sen1b= Sen_1b$simulation$cons_green
-cons_brown_sen1b = Sen_1b$simulation$cons_brown
-inv_gr_rd_brown_sen1b= Sen_1b$simulation$inv_gr_rd_brown
-k_gr_con_sen1b= Sen_1b$simulation$k_gr_con
-y_r_brown_sen1b= Sen_1b$simulation$y_r_brown
-yd_r_brown_sen1b = Sen_1b$simulation$yd_r_brown
-inv_gr_brown_sen1b= Sen_1b$simulation$inv_gr_brown
-eta_brown_sen1b= Sen_1b$simulation$eta_brown
-inv_con_brown_sen1b=  Sen_1b$simulation$inv_con_brown
-d_t_brown_sen1b=  Sen_1b$simulation$d_t_brown
-inv_brown_sen1b=  Sen_1b$simulation$inv_brown
-epsilon_brown_sen1b=  Sen_1b$simulation$epsilon_brown
-inv_gr_im_brown_sen1b=  Sen_1b$simulation$inv_gr_im_brown
-
-inv_gr_rd_green_sen1b= Sen_1b$simulation$inv_gr_rd_green
-
-inv_gr_green_sen1b= Sen_1b$simulation$inv_gr_green
-
-inv_con_green_sen1b=  Sen_1b$simulation$inv_con_green
-
-inv_gr_im_green_sen1b=  Sen_1b$simulation$inv_gr_im_green
-
-eta_brown_sen1b = Sen_1b$simulation$eta_brown
-eta_green_sen1b = Sen_1b$simulation$eta_green
-
-eta_gr_brown_sen1b = Sen_1b$simulation$eta_gr_brown
-eta_gr_green_sen1b = Sen_1b$simulation$eta_gr_green
-
-eta_gr_impv_green_sen1b = Sen_1b$simulation$eta_gr_impv_green
-
-eta_gr_impv_brown_sen1b = Sen_1b$simulation$eta_gr_impv_brown
-
-
-########### Grøn eksport ###########
-
-x_gr_brown_sen1b = Sen_1b$simulation$x_gr_brown
-
-x_brown_sen1b = Sen_1b$simulation$x_brown
-
-x_gr_brown_sen1b = Sen_1b$simulation$x_gr_brown
-
-x_brown_sen1b = Sen_1b$simulation$x_brown
-
-im_gr_brown_sen1b = Sen_1b$simulation$im_gr_brown
-
-im_brown_sen1b = Sen_1b$simulation$im_brown
-
-
-eta_gr_green_sen1b = Sen_1b$simulation$eta_gr_green
-eta_gr_brown_sen1b = Sen_1b$simulation$eta_gr_brown
-eta_con_brown_sen1b = Sen_1b$simulation$eta_con_brown
-eta_con_green_sen1b = Sen_1b$simulation$eta_con_green
-
-
-eta_avg_gr_green_sen1b = Sen_1b$simulation$eta_avg_gr_green
-eta_avg_gr_brown_sen1b = Sen_1b$simulation$eta_avg_gr_brown
-
-eta_im_gr_green_sen1b = Sen_1b$simulation$eta_im_gr_green
-eta_im_gr_brown_sen1b = Sen_1b$simulation$eta_im_gr_brown
-
-
-x_brown_sen1b = Sen_1b$simulation$x_brown
-x_gr_brown_sen1b = Sen_1b$simulation$x_gr_brown
-
-x_green_sen1b = Sen_1b$simulation$x_green
-x_gr_green_sen1b = Sen_1b$simulation$x_gr_green
-
-
-y_green_sen1b = Sen_1b$simulation$y_green
-y_sen1b = Sen_1b$simulation$y
-emis_green_sen1b = Sen_1b$simulation$emis_green
-emis_brown_sen1b = Sen_1b$simulation$emis_brown
-emiD_sen1b = Sen_1b$simulation$emis
-x_gr_brown_sen1b = Sen_1b$simulation$x_gr_brown
-im_gr_green_sen1b = Sen_1b$simulation$im_gr_green
-inv_gr_green_sen1b = Sen_1b$simulation$inv_gr_green
-k_gr_green_sen1b = Sen_1b$simulation$k_gr_green
-k_gr_green_sen1b = Sen_1b$simulation$k_gr_green
-k_con_green_sen1b = Sen_1b$simulation$k_con_green
-k_gr_im_green_sen1b = Sen_1b$simulation$k_gr_im_green
-k_green_sen1b = Sen_1b$simulation$k_green
-k_gr_brown_sen1b = Sen_1b$simulation$k_gr_brown
-k_con_brown_sen1b = Sen_1b$simulation$k_con_brown
-k_gr_im_brown_sen1b = Sen_1b$simulation$k_gr_im_brown
-
-k_brown_sen1b = Sen_1b$simulation$k_brown
-
-y_brown_sen1b = Sen_1b$simulation$y_brown
-
-
-
-## Stability check
-h_brown_h_sen1b = Sen_1b$simulation$h_brown_h
-h_brown_s_sen1b = Sen_1b$simulation$h_brown_s
-h_green_h_sen1b = Sen_1b$simulation$h_green_h
-h_green_s_sen1b = Sen_1b$simulation$h_green_s
-
-plot(h_brown_h_sen1b-h_brown_s_sen1b)   
-plot(h_green_h_sen1b-h_green_s_sen1b)  
-```
-
-
-### Scenario 
-
-```{r}
-# Define add-factor list (defining shock)
-constantAdjList_sen1 <- list(
-  
-Strong_PH = TIMESERIES(Strong_PH_model+1 ,START=c(1960,1),  FREQ=1),
-carbon_tax_shock_brown = TIMESERIES(carbon_tax_shock_brown_model+1 ,START=c(2025,1),  FREQ=1)
-
-)
-
-```
-
-
-```{r}
-# Simulate the model (following shock)
-Sen_1 <- SIMULATE(S_model
-                    ,simType='FORECAST'
-                    ,TSRANGE=c(1961,1,2060,1)
-                    ,simConvergence=0.00001
-                    ,simIterLimit=100
-                    ,ConstantAdjustment=constantAdjList_sen1
-                    )
-```
-
-
-```{r}
-
-carbon_tax_x_brown_sen1= Sen_1$simulation$carbon_tax_x_brown
-x_gr_brown_sen1= Sen_1$simulation$x_gr_brown
-
-cons_w_green_sen1= Sen_1$simulation$cons_w_green
-cons_r_green_sen1= Sen_1$simulation$cons_r_green
-im_green_sen1= Sen_1$simulation$im_green
-inv_green_sen1= Sen_1$simulation$inv_green
-gov_tot_green_sen1= Sen_1$simulation$gov_tot_green
-cons_green_sen1= Sen_1$simulation$cons_green
-cons_brown_sen1 = Sen_1$simulation$cons_brown
-inv_gr_rd_brown_sen1= Sen_1$simulation$inv_gr_rd_brown
-k_gr_con_sen1= Sen_1$simulation$k_gr_con
-y_r_brown_sen1= Sen_1$simulation$y_r_brown
-yd_r_brown_sen1 = Sen_1$simulation$yd_r_brown
-inv_gr_brown_sen1= Sen_1$simulation$inv_gr_brown
-eta_brown_sen1= Sen_1$simulation$eta_brown
-inv_con_brown_sen1=  Sen_1$simulation$inv_con_brown
-d_t_brown_sen1=  Sen_1$simulation$d_t_brown
-inv_brown_sen1=  Sen_1$simulation$inv_brown
-epsilon_brown_sen1=  Sen_1$simulation$epsilon_brown
-inv_gr_im_brown_sen1=  Sen_1$simulation$inv_gr_im_brown
-
-inv_gr_rd_green_sen1= Sen_1$simulation$inv_gr_rd_green
-
-inv_gr_green_sen1= Sen_1$simulation$inv_gr_green
-
-inv_con_green_sen1=  Sen_1$simulation$inv_con_green
-
-inv_gr_im_green_sen1=  Sen_1$simulation$inv_gr_im_green
-
-eta_brown_sen1 = Sen_1$simulation$eta_brown
-eta_green_sen1 = Sen_1$simulation$eta_green
-
-eta_gr_brown_sen1 = Sen_1$simulation$eta_gr_brown
-eta_gr_green_sen1 = Sen_1$simulation$eta_gr_green
-
-eta_gr_impv_green_sen1 = Sen_1$simulation$eta_gr_impv_green
-
-eta_gr_impv_brown_sen1 = Sen_1$simulation$eta_gr_impv_brown
-
-
-########### Grøn eksport ###########
-
-x_gr_brown_sen1 = Sen_1$simulation$x_gr_brown
-
-x_brown_sen1 = Sen_1$simulation$x_brown
-
-x_gr_brown_sen1 = Sen_1$simulation$x_gr_brown
-
-x_brown_sen1 = Sen_1$simulation$x_brown
-
-im_gr_brown_sen1 = Sen_1$simulation$im_gr_brown
-
-im_brown_sen1 = Sen_1$simulation$im_brown
-
-
-eta_gr_green_sen1 = Sen_1$simulation$eta_gr_green
-eta_gr_brown_sen1 = Sen_1$simulation$eta_gr_brown
-eta_con_brown_sen1 = Sen_1$simulation$eta_con_brown
-eta_con_green_sen1 = Sen_1$simulation$eta_con_green
-
-
-eta_avg_gr_green_sen1 = Sen_1$simulation$eta_avg_gr_green
-eta_avg_gr_brown_sen1 = Sen_1$simulation$eta_avg_gr_brown
-
-eta_im_gr_green_sen1 = Sen_1$simulation$eta_im_gr_green
-eta_im_gr_brown_sen1 = Sen_1$simulation$eta_im_gr_brown
-
-
-x_brown_sen1 = Sen_1$simulation$x_brown
-x_gr_brown_sen1 = Sen_1$simulation$x_gr_brown
-
-x_green_sen1 = Sen_1$simulation$x_green
-x_gr_green_sen1 = Sen_1$simulation$x_gr_green
-
-
-y_green_sen1 = Sen_1$simulation$y_green
-y_sen1 = Sen_1$simulation$y
-emis_green_sen1 = Sen_1$simulation$emis_green
-emis_brown_sen1 = Sen_1$simulation$emis_brown
-emiD_sen1 = Sen_1$simulation$emis
-x_gr_brown_sen1 = Sen_1$simulation$x_gr_brown
-im_gr_green_sen1 = Sen_1$simulation$im_gr_green
-inv_gr_green_sen1 = Sen_1$simulation$inv_gr_green
-k_gr_green_sen1 = Sen_1$simulation$k_gr_green
-k_gr_green_sen1 = Sen_1$simulation$k_gr_green
-k_con_green_sen1 = Sen_1$simulation$k_con_green
-k_gr_im_green_sen1 = Sen_1$simulation$k_gr_im_green
-k_green_sen1 = Sen_1$simulation$k_green
-k_gr_brown_sen1 = Sen_1$simulation$k_gr_brown
-k_con_brown_sen1 = Sen_1$simulation$k_con_brown
-k_gr_im_brown_sen1 = Sen_1$simulation$k_gr_im_brown
-
-k_brown_sen1 = Sen_1$simulation$k_brown
-
-y_brown_sen1 = Sen_1$simulation$y_brown
-
-
-## Stability check
-h_brown_h_sen1 = Sen_1$simulation$h_brown_h
-h_brown_s_sen1 = Sen_1$simulation$h_brown_s
-h_green_h_sen1 = Sen_1$simulation$h_green_h
-h_green_s_sen1 = Sen_1$simulation$h_green_s
-
-plot(h_brown_h_sen1-h_brown_s_sen1)   
-plot(h_green_h_sen1-h_green_s_sen1)  
-```
-
-
-
-## Sens 2 Narrowly strong PH 
-
-### Baseline
-
-```{r}
-# Define add-factor list (defining shock)
-constantAdjList_sen2b <- list(
-  
+carbon_tax_shock_brown = TIMESERIES(carbon_tax_shock_brown_model+1 ,START=c(2025,1),  FREQ=1),
+Weak_PH = TIMESERIES(Weak_PH_model+1 ,START=c(1960,1),  FREQ=1),
 Narrowly_strong_PH = TIMESERIES(Narrowly_strong_PH_model+1 ,START=c(1960,1),  FREQ=1)
 
 )
@@ -5318,416 +5046,155 @@ Narrowly_strong_PH = TIMESERIES(Narrowly_strong_PH_model+1 ,START=c(1960,1),  FR
 
 ```{r}
 # Simulate the model (following shock)
-Sen_2b <- SIMULATE(S_model
+S_3 <- SIMULATE(S_model
                     ,simType='FORECAST'
                     ,TSRANGE=c(1961,1,2060,1)
                     ,simConvergence=0.00001
                     ,simIterLimit=100
-                    ,ConstantAdjustment=constantAdjList_sen2b
+                    ,ConstantAdjustment=constantAdjList_S3
                     )
 ```
 
 
 ```{r}
 
-carbon_tax_x_brown_sen2b= Sen_2b$simulation$carbon_tax_x_brown
-x_gr_brown_sen2b= Sen_2b$simulation$x_gr_brown
+epsilon_green_13= S_3$simulation$epsilon_green
+f_brown_13= S_3$simulation$f_brown
+## Economic variables
+cons_w_green_13= S_3$simulation$cons_w_green
+cons_r_green_13= S_3$simulation$cons_r_green
+im_green_13= S_3$simulation$im_green
+inv_green_13= S_3$simulation$inv_green
+gov_tot_green_13= S_3$simulation$gov_tot_green
+cons_green_13= S_3$simulation$cons_green
+cons_brown_13 = S_3$simulation$cons_brown
+inv_gr_rd_brown_13= S_3$simulation$inv_gr_rd_brown
+k_gr_con_13= S_3$simulation$k_gr_con
+y_r_brown_13= S_3$simulation$y_r_brown
+yd_r_brown_13 = S_3$simulation$yd_r_brown
+inv_gr_brown_13= S_3$simulation$inv_gr_brown
+inv_con_brown_13=  S_3$simulation$inv_con_brown
+inv_brown_13=  S_3$simulation$inv_brown
+inv_gr_im_brown_13=  S_3$simulation$inv_gr_im_brown
+inv_gr_rd_green_13= S_3$simulation$inv_gr_rd_green
+inv_gr_green_13= S_3$simulation$inv_gr_green
+inv_con_green_13=  S_3$simulation$inv_con_green
+inv_gr_im_green_13=  S_3$simulation$inv_gr_im_green
+inv_gr_brown_t_13 = S_3$simulation$inv_gr_brown_t
+gov_gr_inv_brown_13 = S_3$simulation$gov_gr_inv_brown
+gov_tot_inv_brown_13 = S_3$simulation$gov_tot_inv_brown
+gov_tot_brown_13 = S_3$simulation$gov_tot_brown
+gov_con_brown_13 = S_3$simulation$gov_con_brown
+yd_r_green_13 = S_3$simulation$yd_r_green
+t_green_13 = S_3$simulation$t_green
+t_brown_13 = S_3$simulation$t_brown
+gov_gr_green_13 = S_3$simulation$gov_gr_green
+y_green_13 = S_3$simulation$y_green
+y_13 = S_3$simulation$y
+inv_gr_green_13 = S_3$simulation$inv_gr_green
+k_gr_green_13 = S_3$simulation$k_gr_green
+k_con_green_13 = S_3$simulation$k_con_green
+k_gr_im_green_13 = S_3$simulation$k_gr_im_green
+k_green_13 = S_3$simulation$k_green
+k_gr_brown_13 = S_3$simulation$k_gr_brown
+k_con_brown_13 = S_3$simulation$k_con_brown
+k_gr_im_brown_13 = S_3$simulation$k_gr_im_brown
+k_brown_13 = S_3$simulation$k_brown
+y_brown_13 = S_3$simulation$y_brown
 
-cons_w_green_sen2b= Sen_2b$simulation$cons_w_green
-cons_r_green_sen2b= Sen_2b$simulation$cons_r_green
-im_green_sen2b= Sen_2b$simulation$im_green
-inv_green_sen2b= Sen_2b$simulation$inv_green
-gov_tot_green_sen2b= Sen_2b$simulation$gov_tot_green
-cons_green_sen2b= Sen_2b$simulation$cons_green
-cons_brown_sen2b = Sen_2b$simulation$cons_brown
-inv_gr_rd_brown_sen2b= Sen_2b$simulation$inv_gr_rd_brown
-k_gr_con_sen2b= Sen_2b$simulation$k_gr_con
-y_r_brown_sen2b= Sen_2b$simulation$y_r_brown
-yd_r_brown_sen2b = Sen_2b$simulation$yd_r_brown
-inv_gr_brown_sen2b= Sen_2b$simulation$inv_gr_brown
-eta_brown_sen2b= Sen_2b$simulation$eta_brown
-inv_con_brown_sen2b=  Sen_2b$simulation$inv_con_brown
-d_t_brown_sen2b=  Sen_2b$simulation$d_t_brown
-inv_brown_sen2b=  Sen_2b$simulation$inv_brown
-epsilon_brown_sen2b=  Sen_2b$simulation$epsilon_brown
-inv_gr_im_brown_sen2b=  Sen_2b$simulation$inv_gr_im_brown
 
-inv_gr_rd_green_sen2b= Sen_2b$simulation$inv_gr_rd_green
+## Environmental variables
+d_t_brown_13=  S_3$simulation$d_t_brown
+d_t_green_13 = S_3$simulation$d_t_green
+eta_brown_13 = S_3$simulation$eta_brown
+eta_green_13 = S_3$simulation$eta_green
+eta_gr_brown_13 = S_3$simulation$eta_gr_brown
+eta_gr_green_13 = S_3$simulation$eta_gr_green
+eta_gr_impv_green_13 = S_3$simulation$eta_gr_impv_green
+eta_gr_impv_brown_13 = S_3$simulation$eta_gr_impv_brown
+eta_con_brown_13 = S_3$simulation$eta_con_brown
+eta_con_green_13 = S_3$simulation$eta_con_green
+eta_avg_gr_green_13 = S_3$simulation$eta_avg_gr_green
+eta_avg_gr_brown_13 = S_3$simulation$eta_avg_gr_brown
+eta_im_gr_green_13 = S_3$simulation$eta_im_gr_green
+eta_im_gr_brown_13 = S_3$simulation$eta_im_gr_brown
 
-inv_gr_green_sen2b= Sen_2b$simulation$inv_gr_green
 
-inv_con_green_sen2b=  Sen_2b$simulation$inv_con_green
+epsilon_brown_13=  S_3$simulation$epsilon_brown
 
-inv_gr_im_green_sen2b=  Sen_2b$simulation$inv_gr_im_green
+gov_gr_rd_brown_13 = S_3$simulation$gov_gr_rd_brown
+gov_gr_rd_green_13 = S_3$simulation$gov_gr_rd_green
+gov_gr_brown_13= S_3$simulation$gov_gr_brown
 
-eta_brown_sen2b = Sen_2b$simulation$eta_brown
-eta_green_sen2b = Sen_2b$simulation$eta_green
+beta_gr_green_13 = S_3$simulation$beta_gr_green
+beta_gr_brown_13 = S_3$simulation$beta_gr_brown
+beta_con_brown_13 = S_3$simulation$beta_con_brown
+beta_con_green_13 = S_3$simulation$beta_con_green
+beta_avg_gr_green_13 = S_3$simulation$beta_avg_gr_green
+beta_avg_gr_brown_13 = S_3$simulation$beta_avg_gr_brown
+beta_im_gr_green_13 = S_3$simulation$beta_im_gr_green
+beta_im_gr_brown_13 = S_3$simulation$beta_im_gr_brown
+beta_brown_13 = S_3$simulation$beta_brown
+beta_green_13 = S_3$simulation$beta_green
 
-eta_gr_brown_sen2b = Sen_2b$simulation$eta_gr_brown
-eta_gr_green_sen2b = Sen_2b$simulation$eta_gr_green
-
-eta_gr_impv_green_sen2b = Sen_2b$simulation$eta_gr_impv_green
-
-eta_gr_impv_brown_sen2b = Sen_2b$simulation$eta_gr_impv_brown
-
+emis_green_13 = S_3$simulation$emis_green
+emis_brown_13 = S_3$simulation$emis_brown
+emis_13 = S_3$simulation$emis
+temp_at_13 = S_3$simulation$temp_at
 
 ########### Grøn eksport ###########
 
-x_gr_brown_sen2b = Sen_2b$simulation$x_gr_brown
-
-x_brown_sen2b = Sen_2b$simulation$x_brown
-
-x_gr_brown_sen2b = Sen_2b$simulation$x_gr_brown
-
-x_brown_sen2b = Sen_2b$simulation$x_brown
-
-im_gr_brown_sen2b = Sen_2b$simulation$im_gr_brown
-
-im_brown_sen2b = Sen_2b$simulation$im_brown
+x_gr_brown_13 = S_3$simulation$x_gr_brown
+x_gr_brown_13 = S_3$simulation$x_gr_brown
+x_brown_13 = S_3$simulation$x_brown
+im_gr_brown_13 = S_3$simulation$im_gr_brown
+im_brown_13 = S_3$simulation$im_brown
+x_green_13 = S_3$simulation$x_green
+x_gr_green_13 = S_3$simulation$x_gr_green
+im_gr_green_13 = S_3$simulation$im_gr_green
 
 
-eta_gr_green_sen2b = Sen_2b$simulation$eta_gr_green
-eta_gr_brown_sen2b = Sen_2b$simulation$eta_gr_brown
-eta_con_brown_sen2b = Sen_2b$simulation$eta_con_brown
-eta_con_green_sen2b = Sen_2b$simulation$eta_con_green
-
-
-eta_avg_gr_green_sen2b = Sen_2b$simulation$eta_avg_gr_green
-eta_avg_gr_brown_sen2b = Sen_2b$simulation$eta_avg_gr_brown
-
-eta_im_gr_green_sen2b = Sen_2b$simulation$eta_im_gr_green
-eta_im_gr_brown_sen2b = Sen_2b$simulation$eta_im_gr_brown
-
-
-x_brown_sen2b = Sen_2b$simulation$x_brown
-x_gr_brown_sen2b = Sen_2b$simulation$x_gr_brown
-
-x_green_sen2b = Sen_2b$simulation$x_green
-x_gr_green_sen2b = Sen_2b$simulation$x_gr_green
-
-
-y_green_sen2b = Sen_2b$simulation$y_green
-y_sen2b = Sen_2b$simulation$y
-emis_green_sen2b = Sen_2b$simulation$emis_green
-emis_brown_sen2b = Sen_2b$simulation$emis_brown
-emiD_sen2b = Sen_2b$simulation$emis
-x_gr_brown_sen2b = Sen_2b$simulation$x_gr_brown
-im_gr_green_sen2b = Sen_2b$simulation$im_gr_green
-inv_gr_green_sen2b = Sen_2b$simulation$inv_gr_green
-k_gr_green_sen2b = Sen_2b$simulation$k_gr_green
-k_gr_green_sen2b = Sen_2b$simulation$k_gr_green
-k_con_green_sen2b = Sen_2b$simulation$k_con_green
-k_gr_im_green_sen2b = Sen_2b$simulation$k_gr_im_green
-k_green_sen2b = Sen_2b$simulation$k_green
-k_gr_brown_sen2b = Sen_2b$simulation$k_gr_brown
-k_con_brown_sen2b = Sen_2b$simulation$k_con_brown
-k_gr_im_brown_sen2b = Sen_2b$simulation$k_gr_im_brown
-
-k_brown_sen2b = Sen_2b$simulation$k_brown
-
-y_brown_sen2b = Sen_2b$simulation$y_brown
-
+############### Carbon tax #################
+share_x_brown_13 = S_3$simulation$share_x_brown
+share_tech_brown_13 = S_3$simulation$share_tech_brown
+share_dev_brown_13 = S_3$simulation$share_dev_brown
+carbon_tax_green_13 = S_3$simulation$carbon_tax_green
+carbon_tax_brown_13 = S_3$simulation$carbon_tax_brown
+carbon_tax_rate_brown_13 = S_3$simulation$carbon_tax_rate_brown
+carbon_tax_x_brown_13 = S_3$simulation$carbon_tax_x_brown
+carbon_tax_tech_brown_13 = S_3$simulation$carbon_tax_tech_brown
+carbon_tax_dev_brown_13 = S_3$simulation$carbon_tax_dev_brown
 
 #### Important checks #########
 
-## Stability check
-h_brown_h_sen2b = Sen_2b$simulation$h_brown_h
-h_brown_s_sen2b = Sen_2b$simulation$h_brown_s
-h_green_h_sen2b = Sen_2b$simulation$h_green_h
-h_green_s_sen2b = Sen_2b$simulation$h_green_s
+inv_gr_brown_t_13 > inv_brown_13 - inv_gr_im_brown_13 - inv_gr_rd_brown_13
 
-plot(h_brown_h_sen2b-h_brown_s_sen2b)   
-plot(h_green_h_sen2b-h_green_s_sen2b)  
+inv_gr_rd_brown_13/inv_brown_13
+## Stability check
+h_brown_h_13 = S_3$simulation$h_brown_h
+h_brown_s_13 = S_3$simulation$h_brown_s
+h_green_h_13 = S_3$simulation$h_green_h
+h_green_s_13 = S_3$simulation$h_green_s
+
+plot(h_brown_h_13-h_brown_s_13)   
+plot(h_green_h_13-h_green_s_13)  
 ```
 
 
-### Scenario 
+
+
+## Scenario 4
+
+
 
 ```{r}
 # Define add-factor list (defining shock)
-constantAdjList_sen2 <- list(
+constantAdjList_S4 <- list(
   
-Narrowly_strong_PH = TIMESERIES(Narrowly_strong_PH_model+1 ,START=c(1960,1),  FREQ=1),
-carbon_tax_shock_brown = TIMESERIES(carbon_tax_shock_brown_model+1 ,START=c(2025,1),  FREQ=1)
-
-)
-
-```
-
-
-```{r}
-# Simulate the model (following shock)
-Sen_2 <- SIMULATE(S_model
-                    ,simType='FORECAST'
-                    ,TSRANGE=c(1961,1,2060,1)
-                    ,simConvergence=0.00001
-                    ,simIterLimit=100
-                    ,ConstantAdjustment=constantAdjList_sen2
-                    )
-```
-
-
-```{r}
-
-carbon_tax_x_brown_sen2= Sen_2$simulation$carbon_tax_x_brown
-x_gr_brown_sen2= Sen_2$simulation$x_gr_brown
-
-cons_w_green_sen2= Sen_2$simulation$cons_w_green
-cons_r_green_sen2= Sen_2$simulation$cons_r_green
-im_green_sen2= Sen_2$simulation$im_green
-inv_green_sen2= Sen_2$simulation$inv_green
-gov_tot_green_sen2= Sen_2$simulation$gov_tot_green
-cons_green_sen2= Sen_2$simulation$cons_green
-cons_brown_sen2 = Sen_2$simulation$cons_brown
-inv_gr_rd_brown_sen2= Sen_2$simulation$inv_gr_rd_brown
-k_gr_con_sen2= Sen_2$simulation$k_gr_con
-y_r_brown_sen2= Sen_2$simulation$y_r_brown
-yd_r_brown_sen2 = Sen_2$simulation$yd_r_brown
-inv_gr_brown_sen2= Sen_2$simulation$inv_gr_brown
-eta_brown_sen2= Sen_2$simulation$eta_brown
-inv_con_brown_sen2=  Sen_2$simulation$inv_con_brown
-d_t_brown_sen2=  Sen_2$simulation$d_t_brown
-inv_brown_sen2=  Sen_2$simulation$inv_brown
-epsilon_brown_sen2=  Sen_2$simulation$epsilon_brown
-inv_gr_im_brown_sen2=  Sen_2$simulation$inv_gr_im_brown
-
-inv_gr_rd_green_sen2= Sen_2$simulation$inv_gr_rd_green
-
-inv_gr_green_sen2= Sen_2$simulation$inv_gr_green
-
-inv_con_green_sen2=  Sen_2$simulation$inv_con_green
-
-inv_gr_im_green_sen2=  Sen_2$simulation$inv_gr_im_green
-
-eta_brown_sen2 = Sen_2$simulation$eta_brown
-eta_green_sen2 = Sen_2$simulation$eta_green
-
-eta_gr_brown_sen2 = Sen_2$simulation$eta_gr_brown
-eta_gr_green_sen2 = Sen_2$simulation$eta_gr_green
-
-eta_gr_impv_green_sen2 = Sen_2$simulation$eta_gr_impv_green
-
-eta_gr_impv_brown_sen2 = Sen_2$simulation$eta_gr_impv_brown
-
-
-########### Grøn eksport ###########
-
-x_gr_brown_sen2 = Sen_2$simulation$x_gr_brown
-
-x_brown_sen2 = Sen_2$simulation$x_brown
-
-x_gr_brown_sen2 = Sen_2$simulation$x_gr_brown
-
-x_brown_sen2 = Sen_2$simulation$x_brown
-
-im_gr_brown_sen2 = Sen_2$simulation$im_gr_brown
-
-im_brown_sen2 = Sen_2$simulation$im_brown
-
-
-eta_gr_green_sen2 = Sen_2$simulation$eta_gr_green
-eta_gr_brown_sen2 = Sen_2$simulation$eta_gr_brown
-eta_con_brown_sen2 = Sen_2$simulation$eta_con_brown
-eta_con_green_sen2 = Sen_2$simulation$eta_con_green
-
-
-eta_avg_gr_green_sen2 = Sen_2$simulation$eta_avg_gr_green
-eta_avg_gr_brown_sen2 = Sen_2$simulation$eta_avg_gr_brown
-
-eta_im_gr_green_sen2 = Sen_2$simulation$eta_im_gr_green
-eta_im_gr_brown_sen2 = Sen_2$simulation$eta_im_gr_brown
-
-
-x_brown_sen2 = Sen_2$simulation$x_brown
-x_gr_brown_sen2 = Sen_2$simulation$x_gr_brown
-
-x_green_sen2 = Sen_2$simulation$x_green
-x_gr_green_sen2 = Sen_2$simulation$x_gr_green
-
-
-y_green_sen2 = Sen_2$simulation$y_green
-y_sen2 = Sen_2$simulation$y
-emis_green_sen2 = Sen_2$simulation$emis_green
-emis_brown_sen2 = Sen_2$simulation$emis_brown
-emiD_sen2 = Sen_2$simulation$emis
-x_gr_brown_sen2 = Sen_2$simulation$x_gr_brown
-im_gr_green_sen2 = Sen_2$simulation$im_gr_green
-inv_gr_green_sen2 = Sen_2$simulation$inv_gr_green
-k_gr_green_sen2 = Sen_2$simulation$k_gr_green
-k_gr_green_sen2 = Sen_2$simulation$k_gr_green
-k_con_green_sen2 = Sen_2$simulation$k_con_green
-k_gr_im_green_sen2 = Sen_2$simulation$k_gr_im_green
-k_green_sen2 = Sen_2$simulation$k_green
-k_gr_brown_sen2 = Sen_2$simulation$k_gr_brown
-k_con_brown_sen2 = Sen_2$simulation$k_con_brown
-k_gr_im_brown_sen2 = Sen_2$simulation$k_gr_im_brown
-
-k_brown_sen2 = Sen_2$simulation$k_brown
-
-y_brown_sen2 = Sen_2$simulation$y_brown
-
-
-## Stability check
-h_brown_h_sen2 = Sen_2$simulation$h_brown_h
-h_brown_s_sen2 = Sen_2$simulation$h_brown_s
-h_green_h_sen2 = Sen_2$simulation$h_green_h
-h_green_s_sen2 = Sen_2$simulation$h_green_s
-
-plot(h_brown_h_sen2-h_brown_s_sen2)   
-plot(h_green_h_sen2-h_green_s_sen2)  
-```
-
-## Sens 3 Strong PH  and Weak PH
-
-### Baseline
-
-```{r}
-# Define add-factor list (defining shock)
-constantAdjList_sen3b <- list(
-  
-Weak_PH = TIMESERIES(Weak_PH_model+1 ,START=c(1960,1),  FREQ=1),
-Strong_PH = TIMESERIES(Strong_PH_model+1 ,START=c(1960,1),  FREQ=1)
-
-)
-
-```
-
-
-```{r}
-# Simulate the model (following shock)
-Sen_3b <- SIMULATE(S_model
-                    ,simType='FORECAST'
-                    ,TSRANGE=c(1961,1,2060,1)
-                    ,simConvergence=0.00001
-                    ,simIterLimit=100
-                    ,ConstantAdjustment=constantAdjList_sen3b
-                    )
-```
-
-
-```{r}
-
-carbon_tax_x_brown_sen3b= Sen_3b$simulation$carbon_tax_x_brown
-x_gr_brown_sen3b= Sen_3b$simulation$x_gr_brown
-
-cons_w_green_sen3b= Sen_3b$simulation$cons_w_green
-cons_r_green_sen3b= Sen_3b$simulation$cons_r_green
-im_green_sen3b= Sen_3b$simulation$im_green
-inv_green_sen3b= Sen_3b$simulation$inv_green
-gov_tot_green_sen3b= Sen_3b$simulation$gov_tot_green
-cons_green_sen3b= Sen_3b$simulation$cons_green
-cons_brown_sen3b = Sen_3b$simulation$cons_brown
-inv_gr_rd_brown_sen3b= Sen_3b$simulation$inv_gr_rd_brown
-k_gr_con_sen3b= Sen_3b$simulation$k_gr_con
-y_r_brown_sen3b= Sen_3b$simulation$y_r_brown
-yd_r_brown_sen3b = Sen_3b$simulation$yd_r_brown
-inv_gr_brown_sen3b= Sen_3b$simulation$inv_gr_brown
-eta_brown_sen3b= Sen_3b$simulation$eta_brown
-inv_con_brown_sen3b=  Sen_3b$simulation$inv_con_brown
-d_t_brown_sen3b=  Sen_3b$simulation$d_t_brown
-inv_brown_sen3b=  Sen_3b$simulation$inv_brown
-epsilon_brown_sen3b=  Sen_3b$simulation$epsilon_brown
-inv_gr_im_brown_sen3b=  Sen_3b$simulation$inv_gr_im_brown
-
-inv_gr_rd_green_sen3b= Sen_3b$simulation$inv_gr_rd_green
-
-inv_gr_green_sen3b= Sen_3b$simulation$inv_gr_green
-
-inv_con_green_sen3b=  Sen_3b$simulation$inv_con_green
-
-inv_gr_im_green_sen3b=  Sen_3b$simulation$inv_gr_im_green
-
-eta_brown_sen3b = Sen_3b$simulation$eta_brown
-eta_green_sen3b = Sen_3b$simulation$eta_green
-
-eta_gr_brown_sen3b = Sen_3b$simulation$eta_gr_brown
-eta_gr_green_sen3b = Sen_3b$simulation$eta_gr_green
-
-eta_gr_impv_green_sen3b = Sen_3b$simulation$eta_gr_impv_green
-
-eta_gr_impv_brown_sen3b = Sen_3b$simulation$eta_gr_impv_brown
-
-
-########### Grøn eksport ###########
-
-x_gr_brown_sen3b = Sen_3b$simulation$x_gr_brown
-
-x_brown_sen3b = Sen_3b$simulation$x_brown
-
-x_gr_brown_sen3b = Sen_3b$simulation$x_gr_brown
-
-x_brown_sen3b = Sen_3b$simulation$x_brown
-
-im_gr_brown_sen3b = Sen_3b$simulation$im_gr_brown
-
-im_brown_sen3b = Sen_3b$simulation$im_brown
-
-
-eta_gr_green_sen3b = Sen_3b$simulation$eta_gr_green
-eta_gr_brown_sen3b = Sen_3b$simulation$eta_gr_brown
-eta_con_brown_sen3b = Sen_3b$simulation$eta_con_brown
-eta_con_green_sen3b = Sen_3b$simulation$eta_con_green
-
-
-eta_avg_gr_green_sen3b = Sen_3b$simulation$eta_avg_gr_green
-eta_avg_gr_brown_sen3b = Sen_3b$simulation$eta_avg_gr_brown
-
-eta_im_gr_green_sen3b = Sen_3b$simulation$eta_im_gr_green
-eta_im_gr_brown_sen3b = Sen_3b$simulation$eta_im_gr_brown
-
-
-x_brown_sen3b = Sen_3b$simulation$x_brown
-x_gr_brown_sen3b = Sen_3b$simulation$x_gr_brown
-
-x_green_sen3b = Sen_3b$simulation$x_green
-x_gr_green_sen3b = Sen_3b$simulation$x_gr_green
-
-
-y_green_sen3b = Sen_3b$simulation$y_green
-y_sen3b = Sen_3b$simulation$y
-emis_green_sen3b = Sen_3b$simulation$emis_green
-emis_brown_sen3b = Sen_3b$simulation$emis_brown
-emiD_sen3b = Sen_3b$simulation$emis
-x_gr_brown_sen3b = Sen_3b$simulation$x_gr_brown
-im_gr_green_sen3b = Sen_3b$simulation$im_gr_green
-inv_gr_green_sen3b = Sen_3b$simulation$inv_gr_green
-k_gr_green_sen3b = Sen_3b$simulation$k_gr_green
-k_gr_green_sen3b = Sen_3b$simulation$k_gr_green
-k_con_green_sen3b = Sen_3b$simulation$k_con_green
-k_gr_im_green_sen3b = Sen_3b$simulation$k_gr_im_green
-k_green_sen3b = Sen_3b$simulation$k_green
-k_gr_brown_sen3b = Sen_3b$simulation$k_gr_brown
-k_con_brown_sen3b = Sen_3b$simulation$k_con_brown
-k_gr_im_brown_sen3b = Sen_3b$simulation$k_gr_im_brown
-
-k_brown_sen3b = Sen_3b$simulation$k_brown
-
-y_brown_sen3b = Sen_3b$simulation$y_brown
-
-
-#### Important checks #########
-
-## Stability check
-h_brown_h_sen3b = Sen_3b$simulation$h_brown_h
-h_brown_s_sen3b = Sen_3b$simulation$h_brown_s
-h_green_h_sen3b = Sen_3b$simulation$h_green_h
-h_green_s_sen3b = Sen_3b$simulation$h_green_s
-
-plot(h_brown_h_sen3b-h_brown_s_sen3b)   
-plot(h_green_h_sen3b-h_green_s_sen3b)  
-```
-
-
-### Scenario 
-
-```{r}
-# Define add-factor list (defining shock)
-constantAdjList_sen3 <- list(
-  
-Weak_PH = TIMESERIES(Weak_PH_model+1 ,START=c(1960,1),  FREQ=1),
+carbon_tax_shock_brown = TIMESERIES(carbon_tax_shock_brown_model+1 ,START=c(2025,1),  FREQ=1),
 Strong_PH = TIMESERIES(Strong_PH_model+1 ,START=c(1960,1),  FREQ=1),
-carbon_tax_shock_brown = TIMESERIES(carbon_tax_shock_brown_model+1 ,START=c(2025,1),  FREQ=1)
-
+Weak_PH = TIMESERIES(Weak_PH_model+1 ,START=c(1960,1),  FREQ=1),
+Narrowly_strong_PH = TIMESERIES(Narrowly_strong_PH_model+1 ,START=c(1960,1),  FREQ=1)
 )
 
 ```
@@ -5735,184 +5202,300 @@ carbon_tax_shock_brown = TIMESERIES(carbon_tax_shock_brown_model+1 ,START=c(2025
 
 ```{r}
 # Simulate the model (following shock)
-Sen_3 <- SIMULATE(S_model
+S_4 <- SIMULATE(S_model
                     ,simType='FORECAST'
                     ,TSRANGE=c(1961,1,2060,1)
                     ,simConvergence=0.00001
                     ,simIterLimit=100
-                    ,ConstantAdjustment=constantAdjList_sen3
+                    ,ConstantAdjustment=constantAdjList_S4
                     )
 ```
 
 
 ```{r}
 
-carbon_tax_x_brown_sen3= Sen_3$simulation$carbon_tax_x_brown
-x_gr_brown_sen3= Sen_3$simulation$x_gr_brown
 
-cons_w_green_sen3= Sen_3$simulation$cons_w_green
-cons_r_green_sen3= Sen_3$simulation$cons_r_green
-im_green_sen3= Sen_3$simulation$im_green
-inv_green_sen3= Sen_3$simulation$inv_green
-gov_tot_green_sen3= Sen_3$simulation$gov_tot_green
-cons_green_sen3= Sen_3$simulation$cons_green
-cons_brown_sen3 = Sen_3$simulation$cons_brown
-inv_gr_rd_brown_sen3= Sen_3$simulation$inv_gr_rd_brown
-k_gr_con_sen3= Sen_3$simulation$k_gr_con
-y_r_brown_sen3= Sen_3$simulation$y_r_brown
-yd_r_brown_sen3 = Sen_3$simulation$yd_r_brown
-inv_gr_brown_sen3= Sen_3$simulation$inv_gr_brown
-eta_brown_sen3= Sen_3$simulation$eta_brown
-inv_con_brown_sen3=  Sen_3$simulation$inv_con_brown
-d_t_brown_sen3=  Sen_3$simulation$d_t_brown
-inv_brown_sen3=  Sen_3$simulation$inv_brown
-epsilon_brown_sen3=  Sen_3$simulation$epsilon_brown
-inv_gr_im_brown_sen3=  Sen_3$simulation$inv_gr_im_brown
+epsilon_green_14= S_4$simulation$epsilon_green
+f_brown_14= S_4$simulation$f_brown
+## Economic variables
+cons_w_green_14= S_4$simulation$cons_w_green
+cons_r_green_14= S_4$simulation$cons_r_green
+im_green_14= S_4$simulation$im_green
+inv_green_14= S_4$simulation$inv_green
+gov_tot_green_14= S_4$simulation$gov_tot_green
+cons_green_14= S_4$simulation$cons_green
+cons_brown_14 = S_4$simulation$cons_brown
+inv_gr_rd_brown_14= S_4$simulation$inv_gr_rd_brown
+k_gr_con_14= S_4$simulation$k_gr_con
+y_r_brown_14= S_4$simulation$y_r_brown
+yd_r_brown_14 = S_4$simulation$yd_r_brown
+inv_gr_brown_14= S_4$simulation$inv_gr_brown
+inv_con_brown_14=  S_4$simulation$inv_con_brown
+inv_brown_14=  S_4$simulation$inv_brown
+inv_gr_im_brown_14=  S_4$simulation$inv_gr_im_brown
+inv_gr_rd_green_14= S_4$simulation$inv_gr_rd_green
+inv_gr_green_14= S_4$simulation$inv_gr_green
+inv_con_green_14=  S_4$simulation$inv_con_green
+inv_gr_im_green_14=  S_4$simulation$inv_gr_im_green
+inv_gr_brown_t_14 = S_4$simulation$inv_gr_brown_t
+gov_gr_inv_brown_14 = S_4$simulation$gov_gr_inv_brown
+gov_tot_inv_brown_14 = S_4$simulation$gov_tot_inv_brown
+gov_tot_brown_14 = S_4$simulation$gov_tot_brown
+gov_con_brown_14 = S_4$simulation$gov_con_brown
+yd_r_green_14 = S_4$simulation$yd_r_green
+t_green_14 = S_4$simulation$t_green
+t_brown_14 = S_4$simulation$t_brown
+gov_gr_green_14 = S_4$simulation$gov_gr_green
+y_green_14 = S_4$simulation$y_green
+y_14 = S_4$simulation$y
+inv_gr_green_14 = S_4$simulation$inv_gr_green
+k_gr_green_14 = S_4$simulation$k_gr_green
+k_con_green_14 = S_4$simulation$k_con_green
+k_gr_im_green_14 = S_4$simulation$k_gr_im_green
+k_green_14 = S_4$simulation$k_green
+k_gr_brown_14 = S_4$simulation$k_gr_brown
+k_con_brown_14 = S_4$simulation$k_con_brown
+k_gr_im_brown_14 = S_4$simulation$k_gr_im_brown
+k_brown_14 = S_4$simulation$k_brown
+y_brown_14 = S_4$simulation$y_brown
 
-inv_gr_rd_green_sen3= Sen_3$simulation$inv_gr_rd_green
 
-inv_gr_green_sen3= Sen_3$simulation$inv_gr_green
+## Environmental variables
+d_t_brown_14=  S_4$simulation$d_t_brown
+d_t_green_14 = S_4$simulation$d_t_green
+eta_brown_14 = S_4$simulation$eta_brown
+eta_green_14 = S_4$simulation$eta_green
+eta_gr_brown_14 = S_4$simulation$eta_gr_brown
+eta_gr_green_14 = S_4$simulation$eta_gr_green
+eta_gr_impv_green_14 = S_4$simulation$eta_gr_impv_green
+eta_gr_impv_brown_14 = S_4$simulation$eta_gr_impv_brown
+eta_con_brown_14 = S_4$simulation$eta_con_brown
+eta_con_green_14 = S_4$simulation$eta_con_green
+eta_avg_gr_green_14 = S_4$simulation$eta_avg_gr_green
+eta_avg_gr_brown_14 = S_4$simulation$eta_avg_gr_brown
+eta_im_gr_green_14 = S_4$simulation$eta_im_gr_green
+eta_im_gr_brown_14 = S_4$simulation$eta_im_gr_brown
 
-inv_con_green_sen3=  Sen_3$simulation$inv_con_green
 
-inv_gr_im_green_sen3=  Sen_3$simulation$inv_gr_im_green
+epsilon_brown_14=  S_4$simulation$epsilon_brown
 
-eta_brown_sen3 = Sen_3$simulation$eta_brown
-eta_green_sen3 = Sen_3$simulation$eta_green
+gov_gr_rd_brown_14 = S_4$simulation$gov_gr_rd_brown
+gov_gr_rd_green_14 = S_4$simulation$gov_gr_rd_green
+gov_gr_brown_14= S_4$simulation$gov_gr_brown
 
-eta_gr_brown_sen3 = Sen_3$simulation$eta_gr_brown
-eta_gr_green_sen3 = Sen_3$simulation$eta_gr_green
+beta_gr_green_14 = S_4$simulation$beta_gr_green
+beta_gr_brown_14 = S_4$simulation$beta_gr_brown
+beta_con_brown_14 = S_4$simulation$beta_con_brown
+beta_con_green_14 = S_4$simulation$beta_con_green
+beta_avg_gr_green_14 = S_4$simulation$beta_avg_gr_green
+beta_avg_gr_brown_14 = S_4$simulation$beta_avg_gr_brown
+beta_im_gr_green_14 = S_4$simulation$beta_im_gr_green
+beta_im_gr_brown_14 = S_4$simulation$beta_im_gr_brown
+beta_brown_14 = S_4$simulation$beta_brown
+beta_green_14 = S_4$simulation$beta_green
 
-eta_gr_impv_green_sen3 = Sen_3$simulation$eta_gr_impv_green
-
-eta_gr_impv_brown_sen3 = Sen_3$simulation$eta_gr_impv_brown
-
+emis_green_14 = S_4$simulation$emis_green
+emis_brown_14 = S_4$simulation$emis_brown
+emis_14 = S_4$simulation$emis
+temp_at_14 = S_4$simulation$temp_at
 
 ########### Grøn eksport ###########
 
-x_gr_brown_sen3 = Sen_3$simulation$x_gr_brown
-
-x_brown_sen3 = Sen_3$simulation$x_brown
-
-x_gr_brown_sen3 = Sen_3$simulation$x_gr_brown
-
-x_brown_sen3 = Sen_3$simulation$x_brown
-
-im_gr_brown_sen3 = Sen_3$simulation$im_gr_brown
-
-im_brown_sen3 = Sen_3$simulation$im_brown
+x_gr_brown_14 = S_4$simulation$x_gr_brown
+x_gr_brown_14 = S_4$simulation$x_gr_brown
+x_brown_14 = S_4$simulation$x_brown
+im_gr_brown_14 = S_4$simulation$im_gr_brown
+im_brown_14 = S_4$simulation$im_brown
+x_green_14 = S_4$simulation$x_green
+x_gr_green_14 = S_4$simulation$x_gr_green
+im_gr_green_14 = S_4$simulation$im_gr_green
 
 
-eta_gr_green_sen3 = Sen_3$simulation$eta_gr_green
-eta_gr_brown_sen3 = Sen_3$simulation$eta_gr_brown
-eta_con_brown_sen3 = Sen_3$simulation$eta_con_brown
-eta_con_green_sen3 = Sen_3$simulation$eta_con_green
+############### Carbon tax #################
+share_x_brown_14 = S_4$simulation$share_x_brown
+share_tech_brown_14 = S_4$simulation$share_tech_brown
+share_dev_brown_14 = S_4$simulation$share_dev_brown
+carbon_tax_green_14 = S_4$simulation$carbon_tax_green
+carbon_tax_brown_14 = S_4$simulation$carbon_tax_brown
+carbon_tax_rate_brown_14 = S_4$simulation$carbon_tax_rate_brown
+carbon_tax_x_brown_14 = S_4$simulation$carbon_tax_x_brown
+carbon_tax_tech_brown_14 = S_4$simulation$carbon_tax_tech_brown
+carbon_tax_dev_brown_14 = S_4$simulation$carbon_tax_dev_brown
+
+#### Important checks #########
+
+inv_gr_brown_t_14 > inv_brown_14 - inv_gr_im_brown_14 - inv_gr_rd_brown_14
 
 
-eta_avg_gr_green_sen3 = Sen_3$simulation$eta_avg_gr_green
-eta_avg_gr_brown_sen3 = Sen_3$simulation$eta_avg_gr_brown
-
-eta_im_gr_green_sen3 = Sen_3$simulation$eta_im_gr_green
-eta_im_gr_brown_sen3 = Sen_3$simulation$eta_im_gr_brown
-
-
-x_brown_sen3 = Sen_3$simulation$x_brown
-x_gr_brown_sen3 = Sen_3$simulation$x_gr_brown
-
-x_green_sen3 = Sen_3$simulation$x_green
-x_gr_green_sen3 = Sen_3$simulation$x_gr_green
-
-
-y_green_sen3 = Sen_3$simulation$y_green
-y_sen3 = Sen_3$simulation$y
-emis_green_sen3 = Sen_3$simulation$emis_green
-emis_brown_sen3 = Sen_3$simulation$emis_brown
-emiD_sen3 = Sen_3$simulation$emis
-x_gr_brown_sen3 = Sen_3$simulation$x_gr_brown
-im_gr_green_sen3 = Sen_3$simulation$im_gr_green
-inv_gr_green_sen3 = Sen_3$simulation$inv_gr_green
-k_gr_green_sen3 = Sen_3$simulation$k_gr_green
-k_gr_green_sen3 = Sen_3$simulation$k_gr_green
-k_con_green_sen3 = Sen_3$simulation$k_con_green
-k_gr_im_green_sen3 = Sen_3$simulation$k_gr_im_green
-k_green_sen3 = Sen_3$simulation$k_green
-k_gr_brown_sen3 = Sen_3$simulation$k_gr_brown
-k_con_brown_sen3 = Sen_3$simulation$k_con_brown
-k_gr_im_brown_sen3 = Sen_3$simulation$k_gr_im_brown
-
-k_brown_sen3 = Sen_3$simulation$k_brown
-
-y_brown_sen3 = Sen_3$simulation$y_brown
-
+inv_gr_rd_brown_14/inv_brown_14
 
 ## Stability check
-h_brown_h_sen3 = Sen_3$simulation$h_brown_h
-h_brown_s_sen3 = Sen_3$simulation$h_brown_s
-h_green_h_sen3 = Sen_3$simulation$h_green_h
-h_green_s_sen3 = Sen_3$simulation$h_green_s
+h_brown_h_14 = S_4$simulation$h_brown_h
+h_brown_s_14 = S_4$simulation$h_brown_s
+h_green_h_14 = S_4$simulation$h_green_h
+h_green_s_14 = S_4$simulation$h_green_s
 
-plot(h_brown_h_sen3-h_brown_s_sen3)   
-plot(h_green_h_sen3-h_green_s_sen3)  
+plot(h_brown_h_14-h_brown_s_14)   
+plot(h_green_h_14-h_green_s_14)  
 ```
 
 
+# plots
 
-# Sensitivity plots
+## All Scenarios
 
 
-## Isolating the effects
+
 
 ```{r, fig.width= 10, fig.height= 15}
+
 par(mfrow=c(3,2))
-plot((y_brown_12 - y_brown_20)/y_brown_20*100, col= "green", xlab= "Year", ylab= "% change in GDP", main= "Change in GDP DK", lwd=2);
-lines((y_brown_11 - y_brown_10)/y_brown_10*100, col= "black", lwd=2);
-lines((y_brown_sen1 - y_brown_sen1b)/y_brown_sen1b*100, col= "red", lwd=2);
-lines((y_brown_sen2 - y_brown_sen2b)/y_brown_sen2b*100, col= "blue", lwd=2);
-legend("left", legend=c("No PH effects","Weak PH","Narrowly strong PH" ,"Strong PH"),
-       lty=c(1),lwd=c(2),bty="n", col = c("black","green","blue", "red"));
+
+plot((y_brown_11 - y_brown_10)/y_brown_10*100, col= "Black", xlab= "Year", ylab= "% change in GDP from baseline Denmark", main= "Change in GDP Denmark", ylim= c(-0.1,1.5), lwd= 2);
+lines((y_brown_12 - y_brown_20)/y_brown_20*100, col= "green", lwd= 2);
+lines((y_brown_13 - y_brown_30)/y_brown_30*100, col= "blue", lwd= 2);
+lines((y_brown_14 - y_brown_40)/y_brown_40*100, col= "red", lwd= 2);
+legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
+       lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
 grid()
 
-plot((y_green_12 - y_green_20)/y_green_20*100, col= "green", xlab= "Year", ylab= "% change in GDP", main= "Change in GDP ROW", lwd=2);
-lines((y_green_11 - y_green_10)/y_green_10*100, col= "black", lwd=2);
-lines((y_green_sen1 - y_green_sen1b)/y_green_sen1b*100, col= "red", lwd=2);
-lines((y_green_sen2 - y_green_sen2b)/y_green_sen2b*100, col= "blue", lwd=2);
-legend("left", legend=c("No PH effects","Weak PH","Narrowly strong PH" ,"Strong PH"),
-       lty=c(1),lwd=c(2),bty="n", col = c("black","green","blue", "red"));
-grid()
-
-plot((eta_brown_12 - eta_brown_20)/eta_brown_20*100, col= "green", xlab= "Year", ylab= "% change in renewability share", main= "renewability share DK", lwd=2);
-lines((eta_brown_11 - eta_brown_10)/eta_brown_10*100, col= "black", lwd=2);
-lines((eta_brown_sen1 - eta_brown_sen1b)/eta_brown_sen1b*100, col= "red", lwd=2);
-lines((eta_brown_sen2 - eta_brown_sen2b)/eta_brown_sen2b*100, col= "blue", lwd=2);
-legend("left", legend=c("No PH effects","Weak PH","Narrowly strong PH" ,"Strong PH"),
-       lty=c(1),lwd=c(2),bty="n", col = c("black","green","blue", "red"));
-grid()
-
-plot((eta_green_12 - eta_green_20)/eta_green_20*100, col= "green", xlab= "Year", ylab= "% change in renewability share", main= "renewability share ROW", ylim= c(0,0.015), lwd=2);
-lines((eta_green_11 - eta_green_10)/eta_green_10*100, col= "black", lwd=2);
-lines((eta_green_sen1 - eta_green_sen1b)/eta_green_sen1b*100, col= "red", lwd=2);
-lines((eta_green_sen2 - eta_green_sen2b)/eta_green_sen2b*100, col= "blue", lwd=2);
-legend("left", legend=c("No PH effects","Weak PH","Narrowly strong PH" ,"Strong PH"),
-       lty=c(1),lwd=c(2),bty="n", col = c("black","green","blue", "red"));
+plot((y_green_11- y_green_10)/y_green_10*100, col= "Black", xlab= "Year", ylab= "% change in GDP from baseline ROW", main= "Change in GDP ROW", ylim=  c(0,0.01), lwd= 2 );
+lines((y_green_12 - y_green_20)/y_green_20*100, col= "green", lwd= 2);
+lines((y_green_13 - y_green_30)/y_green_30*100, col= "blue", lwd= 2);
+lines((y_green_14 - y_green_40)/y_green_30*100, col= "red", lwd= 2);
+legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
+       lty=c(1),lwd=c(2),bty="n", col = c("Black","green","blue", "red"));
 grid()
 
 
-plot((emis_brown_12-emis_brown_20)/emis_brown_20*100, col= "green", xlab= "Year", ylab= "% change in emission", main= "Emission DK", lwd=2);
-lines((emis_brown_11-emis_brown_10)/emis_brown_10*100, col= "black", lwd=2);
-lines((emis_brown_sen1-emis_brown_sen1b)/emis_brown_sen1b*100, col= "red", lwd=2);
-lines((emis_brown_sen2-emis_brown_sen2b)/emis_brown_sen2b*100, col= "blue", lwd=2);
-legend("left", legend=c("No PH effects","Weak PH","Narrowly strong PH" ,"Strong PH"),
-       lty=c(1),lwd=c(2),bty="n", col = c("black","green","blue", "red"));
+plot((eta_brown_11 - eta_brown_10)/eta_brown_10*100, col= "Black", xlab= "Year", ylab= "% change in the renewability share", main= "Change in the renewability share DK", ylim=c(0,12), lwd= 2);
+lines((eta_brown_12 - eta_brown_20)/eta_brown_20*100, col= "green", lwd= 2);
+lines((eta_brown_13 - eta_brown_30)/eta_brown_30*100, col= "blue", lwd= 2);
+lines((eta_brown_14 - eta_brown_40)/eta_brown_40*100, col= "red", lwd= 2);
+legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
+       lty=c(1),lwd=c(2),bty="n", col = c("Black","green", "blue", "red"));
+grid()
+
+plot((eta_green_11- eta_green_10)/eta_green_10*100, col= "Black", xlab= "Year", ylab= "% change in the renewability share", main= "Change in the renewability share ROW", ylim= c(0, 0.025), lwd= 2);
+lines((eta_green_12 - eta_green_20)/eta_green_20*100, col= "green", lwd= 2);
+lines((eta_green_13 - eta_green_30)/eta_green_30*100, col= "blue", lwd= 2);
+lines((eta_green_14 - eta_green_40)/eta_green_30*100, col= "red", lwd= 2);
+legend("left", legend=c("Scenario 1","Scenario 2","Scenario 3", "Scenario 4"),
+       lty=c(1),lwd=c(2),bty="n", col = c("Black","green","blue", "red"));
+grid()
+
+plot((emis_brown_11-emis_brown_10)/emis_brown_10*100, col= "Black", xlab= "Year", ylab= "% change in Emission", main= " Emission Denmark", ylim= c(-30,1), lwd= 2);
+lines((emis_brown_12-emis_brown_20)/emis_brown_20*100, col= "green", lwd= 2);
+lines((emis_brown_13-emis_brown_30)/emis_brown_30*100, col= "blue", lwd= 2);
+lines((emis_brown_14-emis_brown_40)/emis_brown_40*100, col= "red", lwd= 2);
+legend("left", legend=c("Scenario 1","Scenario 2", "Scenario 3", "Scenario 4"),
+       lty=c(1),lwd=c(2),bty="n", col = c("Black","green","blue", "red"));
 grid()
 
 
-plot((emis_green_12-emis_green_20)/emis_green_20*100, col= "green", xlab= "Year", ylab= "% change in emission", main= "Emission ROW", ylim= c(-0.03, 0.005), lwd=2);
-lines((emis_green_11-emis_green_10)/emis_green_10*100, col= "black", lwd=2);
-lines((emis_green_sen1-emis_green_sen1b)/emis_green_sen1b*100, col= "red", lwd=2);
-lines((emis_green_sen2-emis_green_sen2b)/emis_green_sen2b*100, col= "blue", lwd=2);
-legend("left", legend=c("No PH effects","Weak PH","Narrowly strong PH" ,"Strong PH"),
-       lty=c(1),lwd=c(2),bty="n", col = c("black","green","blue", "red"));
+plot((emis_green_11-emis_green_10)/emis_green_10*100, col= "Black", xlab= "Year", ylab= "% change in Emission", main= " Emission ROW", ylim= c(-0.04,0.01), lwd= 2);
+lines((emis_green_12-emis_green_20)/emis_green_20*100, col= "green", lwd= 2);
+lines((emis_green_13-emis_green_30)/emis_green_30*100, col= "blue", lwd= 2);
+lines((emis_green_14-emis_green_40)/emis_green_40*100, col= "red", lwd= 2);
+legend("left", legend=c("Scenario 1","Scenario 2", "Scenario 3", "Scenario 4"),
+       lty=c(1),lwd=c(2),bty="n", col = c("Black","green","blue", "red"));
 grid()
+
 ```
 
+
+
+# Diskussion
+
+## Leakage rate
+
+
+```{r}
+L_rate_s1= - (emis_green_11 - emis_green_10)/(emis_brown_11 - emis_brown_10); L_rate_s1
+
+L_rate_s2= - (emis_green_12 - emis_green_20)/(emis_brown_12 - emis_brown_20); L_rate_s2
+
+L_rate_s3= - (emis_green_13 - emis_green_30)/(emis_brown_13 - emis_brown_30); L_rate_s3
+
+L_rate_s4= - (emis_green_14 - emis_green_40)/(emis_brown_14 - emis_brown_40); L_rate_s4
+```
+
+### Dynamiske leakage rater
+
+```{r}
+
+# Scenario 1
+
+delta_emis_10_s1= sum(window(emis_11 - emis_10, start= 2030, end= 2040))*1000
+delta_emis_20_s1= sum(window(emis_11 - emis_10, start= 2030, end= 2050))*1000
+delta_emis_30_s1= sum(window(emis_11 - emis_10, start= 2030, end= 2060))*1000
+
+delta_emis_row_10_s1= sum(window(emis_green_11 - emis_green_10, start= 2030, end= 2040))*1000
+delta_emis_row_20_s1= sum(window(emis_green_11 - emis_green_10, start= 2030, end= 2050))*1000
+delta_emis_row_30_s1= sum(window(emis_green_11 - emis_green_10, start= 2030, end= 2060))*1000
+
+delta_emis_dk_10_s1= sum(window(emis_brown_11 - emis_brown_10, start= 2030, end= 2040))*1000
+delta_emis_dk_20_s1= sum(window(emis_brown_11 - emis_brown_10, start= 2030, end= 2050))*1000
+delta_emis_dk_30_s1= sum(window(emis_brown_11 - emis_brown_10, start= 2030, end= 2060))*1000
+
+Lr_10_s1= - delta_emis_row_10_s1/delta_emis_dk_10_s1;Lr_10_s1
+Lr_20_s1= - delta_emis_row_20_s1/delta_emis_dk_20_s1;Lr_20_s1
+Lr_30_s1= - delta_emis_row_30_s1/delta_emis_dk_30_s1;Lr_30_s1
+
+
+# Scenario 2
+
+delta_emis_10_s2= sum(window(emis_12 - emis_20, start= 2030, end= 2040))*1000
+delta_emis_20_s2= sum(window(emis_12 - emis_20, start= 2030, end= 2050))*1000
+delta_emis_30_s2= sum(window(emis_12 - emis_20, start= 2030, end= 2060))*1000
+
+delta_emis_row_10_s2= sum(window(emis_green_12 - emis_green_20, start= 2030, end= 2040))*1000
+delta_emis_row_20_s2= sum(window(emis_green_12 - emis_green_20, start= 2030, end= 2050))*1000
+delta_emis_row_30_s2= sum(window(emis_green_12 - emis_green_20, start= 2030, end= 2060))*1000
+
+delta_emis_dk_10_s2= sum(window(emis_brown_12 - emis_brown_20, start= 2030, end= 2040))*1000
+delta_emis_dk_20_s2= sum(window(emis_brown_12 - emis_brown_20, start= 2030, end= 2050))*1000
+delta_emis_dk_30_s2= sum(window(emis_brown_12 - emis_brown_20, start= 2030, end= 2060))*1000
+
+Lr_10_s2= - delta_emis_row_10_s2/delta_emis_dk_10_s2;Lr_10_s2
+Lr_20_s2= - delta_emis_row_20_s2/delta_emis_dk_20_s2;Lr_20_s2
+Lr_30_s2= - delta_emis_row_30_s2/delta_emis_dk_30_s2;Lr_30_s2
+
+# Scenario 3
+
+delta_emis_10_s3= sum(window(emis_13 - emis_30, start= 2030, end= 2040))*1000
+delta_emis_20_s3= sum(window(emis_13 - emis_30, start= 2030, end= 2050))*1000
+delta_emis_30_s3= sum(window(emis_13 - emis_30, start= 2030, end= 2060))*1000
+
+delta_emis_row_10_s3= sum(window(emis_green_13 - emis_green_30, start= 2030, end= 2040))*1000
+delta_emis_row_20_s3= sum(window(emis_green_13 - emis_green_30, start= 2030, end= 2050))*1000
+delta_emis_row_30_s3= sum(window(emis_green_13 - emis_green_30, start= 2030, end= 2060))*1000
+
+delta_emis_dk_10_s3= sum(window(emis_brown_13 - emis_brown_30, start= 2030, end= 2040))*1000
+delta_emis_dk_20_s3= sum(window(emis_brown_13 - emis_brown_30, start= 2030, end= 2050))*1000
+delta_emis_dk_30_s3= sum(window(emis_brown_13 - emis_brown_30, start= 2030, end= 2060))*1000
+
+Lr_10_s3= - delta_emis_row_10_s3/delta_emis_dk_10_s3;Lr_10_s3
+Lr_20_s3= - delta_emis_row_20_s3/delta_emis_dk_20_s3;Lr_20_s3
+Lr_30_s3= - delta_emis_row_30_s3/delta_emis_dk_30_s3;Lr_30_s3
+
+# Scenario 4
+
+delta_emis_10_s4= sum(window(emis_14 - emis_40, start= 2030, end= 2040))*1000
+delta_emis_20_s4= sum(window(emis_14 - emis_40, start= 2030, end= 2050))*1000
+delta_emis_30_s4= sum(window(emis_14 - emis_40, start= 2030, end= 2060))*1000
+
+delta_emis_row_10_s4= sum(window(emis_green_14 - emis_green_40, start= 2030, end= 2040))*1000
+delta_emis_row_20_s4= sum(window(emis_green_14 - emis_green_40, start= 2030, end= 2050))*1000
+delta_emis_row_30_s4= sum(window(emis_green_14 - emis_green_40, start= 2030, end= 2060))*1000
+
+delta_emis_dk_10_s4= sum(window(emis_brown_14 - emis_brown_40, start= 2030, end= 2040))*1000
+delta_emis_dk_20_s4= sum(window(emis_brown_14 - emis_brown_40, start= 2030, end= 2050))*1000
+delta_emis_dk_30_s4= sum(window(emis_brown_14 - emis_brown_40, start= 2030, end= 2060))*1000
+
+Lr_10_s4= - delta_emis_row_10_s4/delta_emis_dk_10_s4;Lr_10_s4
+Lr_20_s4= - delta_emis_row_20_s4/delta_emis_dk_20_s4;Lr_20_s4
+Lr_30_s4= - delta_emis_row_30_s4/delta_emis_dk_30_s4;Lr_30_s4
+
+```
 
